@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saz Wearz &mdash; Your Trusted Clothing Manufacturing Partner | Sialkot, Pakistan</title>
+  <meta name="description" content="Saz Wearz: Your Trusted Clothing Manufacturing Partner. Sialkot to Worldwide. High-end custom cut & sew apparel, low MOQ (30 pieces), 3D puff printing, and express worldwide delivery." />
+  <link rel="icon" type="image/png" href="assets/images/saz-logo-icon.png" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              deep: '#0b1120',
+              surface: '#0f172a',
+              card: '#151f33',
+              hover: '#1c2a44'
+            },
+            royal: {
+              DEFAULT: '#2563eb',
+              dark: '#1d4ed8'
+            },
+            ice: {
+              DEFAULT: '#38bdf8',
+              cyan: '#0284c7'
+            }
+          },
+          fontFamily: {
+            headline: ['"Archivo Black"', 'sans-serif'],
+            serif: ['"Lora"', 'Georgia', 'serif'],
+            body: ['"Lato"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-[#0b1120] text-slate-200 antialiased font-body selection:bg-blue-600 selection:text-white">
+
+  <!-- NAVIGATION BAR (Frosted Glass Style) -->
+  <header class="sticky top-0 z-40 frosted-glass-nav transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- STANDALONE ORIGINAL LOGO ICON ONLY (No extra text next to logo) -->
+        <a href="#home" class="flex items-center group" aria-label="Saz Wearz - Clothing Manufacturing Partner">
+          <img 
+            src="assets/images/saz-logo-icon.png" 
+            alt="Saz Wearz Logo Mark" 
+            class="header-logo-icon group-hover:scale-105 transition-transform" 
+          />
+        </a>
+
+        <!-- Center Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-5 text-sm font-bold text-slate-300">
+          <a href="#categories" class="desktop-nav-link hover:text-sky-400 transition-colors">Categories</a>
+          <a href="#customizer" class="desktop-nav-link hover:text-sky-400 transition-colors">Studio Lab</a>
+          <a href="#process" class="desktop-nav-link hover:text-sky-400 transition-colors">Process</a>
+          <a href="#why-us" class="desktop-nav-link hover:text-sky-400 transition-colors">Why Choose Us</a>
+          <a href="#about" class="desktop-nav-link hover:text-sky-400 transition-colors">About Us</a>
+          <a href="#blog" class="desktop-nav-link hover:text-sky-400 transition-colors">Blog</a>
+          <a href="#global-proof" class="desktop-nav-link hover:text-sky-400 transition-colors">Global Map</a>
+          <a href="#logistics" class="desktop-nav-link hover:text-sky-400 transition-colors">Logistics</a>
+          <a href="#faq" class="desktop-nav-link hover:text-sky-400 transition-colors">FAQ</a>
+        </nav>
+
+        <!-- Right Header Action -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="#quote" class="btn-electric-blue px-6 py-2.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+            <span>Request a Quote</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="lg:hidden flex items-center gap-2">
+          <a href="#quote" class="sm:hidden btn-electric-blue px-3 py-1.5 text-xs font-bold">Quote</a>
+          <button id="mobile-menu-btn" class="p-2 text-slate-300 hover:text-white rounded-lg border border-slate-700 bg-slate-800/80 focus:outline-none" aria-label="Toggle navigation menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 px-6 py-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <!-- Standalone logo icon only in mobile header too -->
+        <img src="assets/images/saz-logo-icon.png" alt="Saz Wearz" class="header-logo-icon" style="max-height: 42px;" />
+        <button id="mobile-menu-close" class="text-slate-400 hover:text-white text-sm font-semibold">&times; Close</button>
+      </div>
+      <nav class="flex flex-col space-y-3 text-base font-bold">
+        <a href="#categories" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Garment Categories</a>
+        <a href="#customizer" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Studio Lab Prototyping</a>
+        <a href="#process" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">8-Step Manufacturing Process</a>
+        <a href="#why-us" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Why Brands Choose Us</a>
+        <a href="#about" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">About Us &amp; Facility</a>
+        <a href="#blog" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Manufacturing Blog &amp; Guides</a>
+        <a href="#global-proof" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Global Proof &amp; Map</a>
+        <a href="#logistics" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Worldwide Logistics</a>
+        <a href="#faq" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">FAQ Accordion</a>
+      </nav>
+      <div class="pt-4 border-t border-slate-800 flex flex-col gap-3">
+        <a href="#quote" class="btn-electric-blue w-full py-3 text-center text-xs font-bold uppercase tracking-wider">Request Factory Quote</a>
+        <a href="https://wa.me/923010850746" target="_blank" class="btn-whatsapp-green w-full py-2.5 text-center text-xs font-bold flex items-center justify-center gap-2">
+          <span>WhatsApp Production Desk (+92 301 0850746)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. CLEAN, MINIMAL HERO SECTION (No star ratings, reviews, or badge ribbons at top/hero) -->
+  <section id="home" class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden bg-mesh-electric">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-6 text-left reveal-on-scroll">
+          
+          <!-- Location Badge Only (Clean & Minimal) -->
+          <div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/40 bg-sky-950/60 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs uppercase tracking-wider font-bold text-sky-300">Export Hub: Sialkot, Pakistan</span>
+            </div>
+          </div>
+
+          <!-- Main Headline Tagline with Strict Archivo Black Font -->
+          <h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight uppercase">
+            YOUR TRUSTED CLOTHING <br class="hidden sm:inline" />
+            <span class="text-gradient-electric">MANUFACTURING PARTNER</span>
+          </h1>
+
+          <!-- Hero Sub-Tagline: Sialkot to Worldwide -->
+          <div class="pt-1">
+            <span class="font-headline text-2xl sm:text-3xl text-sky-300 uppercase tracking-wide">
+              SIALKOT TO WORLDWIDE
+            </span>
+          </div>
+
+          <!-- Paragraph with Electric Royal Blue Brand Accent for SAZ WEARZ -->
+          <p class="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
+            At <span class="brand-contrast">SAZ WEARZ</span>, we engineer high-precision cut & sew apparel, heavyweight French terry streetwear, genuine leather outerwear, activewear, and performance team kits for emerging brands and established global labels.
+          </p>
+
+          <!-- Dual CTA Buttons -->
+          <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#customizer" class="btn-electric-blue px-8 py-3.5 text-center text-xs font-bold uppercase tracking-wider shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2.5">
+              <span>Launch Product Customizer</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <a href="https://wa.me/923010850746" target="_blank" class="btn-whatsapp-green px-7 py-3.5 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.53 1.76.812 2.796.813h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.768-5.773-5.768zm3.364 8.163c-.14.394-.814.729-1.127.777-.314.048-.724.072-2.348-.601-1.378-.57-2.268-1.975-2.337-2.067-.068-.093-.56-.745-.56-1.42 0-.676.353-1.008.479-1.146.126-.139.274-.174.366-.174.093 0 .185.001.266.005.086.004.202-.033.315.24.116.279.394.965.428 1.036.035.07.058.152.012.244-.047.093-.07.151-.14.232-.07.081-.146.182-.209.244-.07.069-.143.144-.061.284.081.139.362.597.777.967.534.475.984.622 1.124.692.14.07.221.058.303-.035.081-.093.349-.406.442-.546.093-.139.186-.116.314-.07.128.047.814.384.954.454.14.07.233.104.267.162.035.059.035.343-.105.737z"/></svg>
+              <span>Direct WhatsApp Desk</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual -->
+        <div class="lg:col-span-5 relative reveal-on-scroll">
+          <div class="relative rounded-2xl overflow-hidden border border-sky-500/30 shadow-2xl shadow-blue-900/40 group">
+            <img 
+              src="assets/images/hero-split.jpg" 
+              alt="High-End Apparel Manufacturing in Sialkot Pakistan" 
+              class="w-full h-[470px] object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+
+            <!-- Floating Overlay Card -->
+            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/10 shadow-lg flex items-center justify-between pointer-events-none">
+              <div>
+                <div class="text-xs uppercase tracking-wider text-sky-400 font-bold">
+                  <span class="brand-contrast">SAZ WEARZ</span> Factory Unit
+                </div>
+                <div class="text-sm font-bold text-white font-serif">Sialkot 51310, Punjab, Pakistan</div>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-full border border-emerald-500/30 font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Floor Active
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. HIGH-IMPACT SCROLLING MARQUEE TICKER (PLACED DIRECTLY ABOVE PRODUCT CATEGORIES) -->
+  <div class="relative bg-[#2563EB] text-white overflow-hidden py-4 border-y border-blue-400/30 shadow-xl shadow-blue-950/40 select-none z-20">
+    <div class="flex whitespace-nowrap animate-marquee">
+      <div class="flex items-center shrink-0 space-x-6 text-white font-headline font-black text-xs sm:text-sm md:text-base uppercase tracking-wider px-4">
+        <span>★ EXPORT HUB: SIALKOT, PAKISTAN</span>
+        <span class="text-sky-200">•</span>
+        <span>★ LOW MOQ: JUST 30 PIECES</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 5–6 YEARS INDUSTRY EXPERIENCE</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 50+ GLOBAL BRANDS MANUFACTURED</span>
+        <span class="text-sky-200">•</span>
+        <span>★ FULL BESPOKE CUT &amp; SEW</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 3D PUFF &amp; CHENILLE EMBROIDERY</span>
+        <span class="text-sky-200">•</span>
+        <span>★ WORLDWIDE EXPRESS DOORSTEP DISPATCH</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 100% IN-HOUSE AQL 2.5 INSPECTION</span>
+        <span class="text-sky-200">•</span>
+      </div>
+      <div class="flex items-center shrink-0 space-x-6 text-white font-headline font-black text-xs sm:text-sm md:text-base uppercase tracking-wider px-4" aria-hidden="true">
+        <span>★ EXPORT HUB: SIALKOT, PAKISTAN</span>
+        <span class="text-sky-200">•</span>
+        <span>★ LOW MOQ: JUST 30 PIECES</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 5–6 YEARS INDUSTRY EXPERIENCE</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 50+ GLOBAL BRANDS MANUFACTURED</span>
+        <span class="text-sky-200">•</span>
+        <span>★ FULL BESPOKE CUT &amp; SEW</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 3D PUFF &amp; CHENILLE EMBROIDERY</span>
+        <span class="text-sky-200">•</span>
+        <span>★ WORLDWIDE EXPRESS DOORSTEP DISPATCH</span>
+        <span class="text-sky-200">•</span>
+        <span>★ 100% IN-HOUSE AQL 2.5 INSPECTION</span>
+        <span class="text-sky-200">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. INTERACTIVE CATEGORY EXPLORER (NO PUBLIC PRICES) -->
+  <section id="categories" class="py-24 bg-[#0f172a] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3 reveal-on-scroll">
+        <span class="text-xs uppercase tracking-widest font-bold text-sky-400">Garment Catalog</span>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase">
+          Product Categories & Sub-Products
+        </h2>
+        <p class="font-serif text-sky-200 text-base italic">
+          Select any category below to expand our comprehensive manufacturing sub-products. No public prices &mdash; every quote is customized to your exact specifications.
+        </p>
+      </div>
+
+      <!-- Main Category Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-10 reveal-on-scroll">
+        <button data-cat="street-wear" class="category-tab-btn active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 text-white border border-blue-500 transition-all">Street Wear</button>
+        <button data-cat="gym-wear" class="category-tab-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 border border-white/10 hover:border-sky-400 transition-all">Gym Wear</button>
+        <button data-cat="leather-wear" class="category-tab-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 border border-white/10 hover:border-sky-400 transition-all">Leather Wear</button>
+        <button data-cat="sports-wear" class="category-tab-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 border border-white/10 hover:border-sky-400 transition-all">Sports Wear</button>
+        <button data-cat="active-wear" class="category-tab-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 border border-white/10 hover:border-sky-400 transition-all">Active Wear</button>
+        <button data-cat="headwear-gear" class="category-tab-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-900 text-slate-300 border border-white/10 hover:border-sky-400 transition-all">Headwear & Gear</button>
+      </div>
+
+      <!-- Category Context Box -->
+      <div class="mb-10 text-center max-w-2xl mx-auto space-y-1 reveal-on-scroll">
+        <h3 id="current-category-title" class="font-headline text-2xl font-bold text-white uppercase">Street Wear Collection</h3>
+        <p id="current-category-desc" class="font-serif italic text-sm text-sky-200">Heavyweight oversized silhouettes, vintage washes, and tactile embellishments built to your exact tech pack specifications.</p>
+      </div>
+
+      <!-- Sub-Category Products Grid (Injected dynamically via app.js - NO PUBLIC PRICES) -->
+      <div id="category-items-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INTERACTIVE PRODUCT DETAIL POPUP MODAL -->
+  <div id="product-detail-modal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-md hidden p-4 sm:p-6 lg:p-10 flex items-center justify-center">
+    <div class="navy-card max-w-5xl w-full p-6 sm:p-8 border border-sky-400/40 relative shadow-2xl space-y-6 my-auto max-h-[92vh] overflow-y-auto">
+      
+      <!-- Top Bar: Prominent Back to Catalog button & Close Icon -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <button type="button" onclick="closeProductModal()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-400 hover:text-white bg-slate-900 border border-sky-400/30 px-4 py-2 rounded-xl transition-all shadow-md">
+          <span>&larr; Back to Catalog</span>
+        </button>
+        <span id="modal-category-breadcrumb" class="hidden sm:inline-block text-xs font-mono text-slate-400">
+          Catalog &bull; <span id="modal-breadcrumb-cat" class="text-sky-300 font-bold">Category</span>
+        </span>
+        <button type="button" onclick="closeProductModal()" class="w-9 h-9 rounded-full bg-slate-900 border border-white/10 text-slate-400 hover:text-white hover:bg-slate-800 flex items-center justify-center text-lg font-bold transition-all" aria-label="Close modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal Body (Two-Column Layout) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Large High-Resolution Image with Hover Cursor Zoom -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="modal-zoom-container relative overflow-hidden group shadow-xl border border-slate-200/20" style="background-color: #F8FAFC; border-radius: 12px; height: 380px; cursor: zoom-in;" id="modal-zoom-wrapper" onmousemove="handleModalZoom(event)" onmouseleave="resetModalZoom()">
+            <img 
+              id="modal-product-img" 
+              src="" 
+              alt="Product Image" 
+              style="object-fit: contain; width: 100%; height: 100%; background-color: #F8FAFC;" 
+              class="modal-zoom-img transition-transform duration-200" 
+            />
+            <span class="absolute top-3 left-3 bg-blue-600 text-white font-mono text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md z-10">
+              MOQ: 30 Pieces
+            </span>
+            <span id="modal-tag-badge" class="absolute top-3 right-3 bg-slate-900/90 text-sky-300 font-mono text-[10px] font-bold px-2.5 py-1 rounded border border-white/10 z-10">
+              Specification
+            </span>
+            <div class="absolute bottom-2.5 left-2.5 bg-slate-900/80 backdrop-blur-sm text-slate-300 text-[10px] font-mono px-2 py-0.5 rounded border border-white/10 pointer-events-none">
+              Hover Cursor Zoom (2x)
+            </div>
+          </div>
+
+          <!-- Dual View Thumbnails (Front / Back Switcher) -->
+          <div id="modal-thumbnails-row" class="flex items-center gap-3">
+            <!-- Dynamically populated if backImage exists -->
+          </div>
+        </div>
+
+        <!-- Right Column: Details, Specs, Customizations, Colors, CTAs -->
+        <div class="lg:col-span-6 space-y-4 text-left">
+          
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/20 border border-blue-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider mb-2">
+              <span id="modal-subtag">&#9733; Custom OEM/ODM Manufacturing</span>
+            </div>
+            <h3 id="modal-product-title" class="font-headline text-2xl sm:text-3xl font-black text-white uppercase">
+              Product Title
+            </h3>
+            <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>MOQ: 30 Pieces (Flexible Low Minimum Order)</span>
+            </div>
+          </div>
+
+          <!-- Short Manufacturing Overview -->
+          <p id="modal-product-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed font-body">
+            Manufacturing overview.
+          </p>
+
+          <!-- Specifications & Available Customizations -->
+          <div class="p-3.5 rounded-xl bg-slate-900/90 border border-white/10 space-y-2.5 text-xs">
+            <div class="flex items-start justify-between gap-2 border-b border-white/5 pb-2">
+              <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Fabric Weight / GSM:</span>
+              <span id="modal-spec-gsm" class="text-white font-mono font-bold text-right">450&ndash;500 GSM French Terry</span>
+            </div>
+            <div class="flex items-start justify-between gap-2 border-b border-white/5 pb-2">
+              <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Stitching Type:</span>
+              <span id="modal-spec-stitching" class="text-sky-300 font-mono font-bold text-right">4-Needle 6-Thread / Twin-Needle</span>
+            </div>
+            <div class="flex items-start justify-between gap-2 border-b border-white/5 pb-2">
+              <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Custom Print Styles:</span>
+              <span id="modal-spec-print" class="text-slate-200 text-right">3D Puff, Screen, DTG, Sublimation</span>
+            </div>
+            <div class="flex items-start justify-between gap-2 border-b border-white/5 pb-2">
+              <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Custom Embroidery:</span>
+              <span id="modal-spec-embroidery" class="text-slate-200 text-right">Flat Tatami, 3D Puff, Chenille Patches</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Available Sizes:</span>
+              <span class="text-emerald-400 font-mono font-bold text-right">XS &bull; S &bull; M &bull; L &bull; XL &bull; 2XL &bull; 3XL</span>
+            </div>
+          </div>
+
+          <!-- Custom Color Swatches & Pantone Field -->
+          <div class="space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-sky-300">Custom Colorway & Pantone</label>
+            <div class="flex flex-wrap items-center gap-2" id="modal-color-swatches">
+              <!-- Swatches generated dynamically -->
+            </div>
+            <input 
+              type="text" 
+              id="modal-pantone-input" 
+              placeholder="Or specify custom Pantone code (e.g. 19-4052 TCX or #2563EB)..." 
+              class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 font-mono" 
+            />
+          </div>
+
+          <!-- Two Direct Action Buttons -->
+          <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button 
+              type="button" 
+              id="modal-btn-formal-quote" 
+              onclick="requestQuoteFromModal()" 
+              class="btn-electric-blue py-3.5 text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-1.5 shadow-lg shadow-blue-600/30"
+            >
+              <span>Request Formal Quotation</span> &rarr;
+            </button>
+            <button 
+              type="button" 
+              id="modal-btn-whatsapp-inquire" 
+              onclick="inquireWhatsAppFromModal()" 
+              class="btn-whatsapp-green py-3.5 text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-600/30"
+            >
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.53 1.76.812 2.796.813h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.768-5.773-5.768zm3.364 8.163c-.14.394-.814.729-1.127.777-.314.048-.724.072-2.348-.601-1.378-.57-2.268-1.975-2.337-2.067-.068-.093-.56-.745-.56-1.42 0-.676.353-1.008.479-1.146.126-.139.274-.174.366-.174.093 0 .185.001.266.005.086.004.202-.033.315.24.116.279.394.965.428 1.036.035.07.058.152.012.244-.047.093-.07.151-.14.232-.07.081-.146.182-.209.244-.07.069-.143.144-.061.284.081.139.362.597.777.967.534.475.984.622 1.124.692.14.07.221.058.303-.035.081-.093.349-.406.442-.546.093-.139.186-.116.314-.07.128.047.814.384.954.454.14.07.233.104.267.162.035.059.035.343-.105.737z"/></svg>
+              <span>Inquire via WhatsApp</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 6. ULTRA-PREMIUM STUDIO-GRADE 3D / 2D CUSTOMIZER TOOL ("SAZ 3D / 2D STUDIO LAB") -->
+  <section id="customizer" class="py-24 bg-[#0b1120] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3 reveal-on-scroll">
+        <span class="text-xs uppercase tracking-widest font-bold text-sky-400">Studio Prototyping Engine</span>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
+          <span class="brand-contrast">SAZ</span> 3D / 2D Studio Lab
+        </h2>
+        <p class="font-serif text-sky-200 text-base italic">
+          Simulate real garment textures, interactive 3D perspective tilts, 2D front &amp; back angles, and tactile embellishments in real-time.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Studio Live Mockup Canvas Preview -->
+        <div class="lg:col-span-5 navy-card p-6 space-y-4 reveal-on-scroll">
+          
+          <!-- Top Toolbars: View Mode & Lighting Presets -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10">
+            <!-- Multi-Angle Mockup Viewers -->
+            <div class="flex flex-wrap items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10">
+              <button type="button" id="btn-view-3d" onclick="setStudioViewMode('3d', this)" class="px-2 py-1 rounded-lg text-[10px] font-bold transition-all bg-sky-500 text-white shadow-sm flex items-center gap-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
+                <span>3D Tilt</span>
+              </button>
+              <button type="button" id="btn-view-front" onclick="setStudioViewMode('front', this)" class="px-2 py-1 rounded-lg text-[10px] font-bold text-slate-300 hover:text-white transition-all">
+                <span>Front View</span>
+              </button>
+              <button type="button" id="btn-view-back" onclick="setStudioViewMode('back', this)" class="px-2 py-1 rounded-lg text-[10px] font-bold text-slate-300 hover:text-white transition-all">
+                <span>Back View</span>
+              </button>
+              <button type="button" id="btn-view-side" onclick="setStudioViewMode('side', this)" class="px-2 py-1 rounded-lg text-[10px] font-bold text-slate-300 hover:text-white transition-all">
+                <span>Side Profile</span>
+              </button>
+              <button type="button" id="btn-view-stitch" onclick="setStudioViewMode('stitch', this)" class="px-2 py-1 rounded-lg text-[10px] font-bold text-slate-300 hover:text-white transition-all" title="Close-up Macro Needlework &amp; Stitching">
+                <span>Stitching Angle</span>
+              </button>
+            </div>
+
+            <!-- Lighting Presets -->
+            <div class="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10">
+              <span class="text-[10px] text-slate-400 font-mono px-1 hidden sm:inline">Light:</span>
+              <button type="button" id="btn-light-neutral" onclick="setStudioLighting('neutral', this)" class="px-2 py-0.5 rounded text-[10px] font-bold transition-all bg-sky-500/20 text-sky-300 border border-sky-400/40" title="Neutral Studio Lighting">Studio</button>
+              <button type="button" id="btn-light-spotlight" onclick="setStudioLighting('spotlight', this)" class="px-2 py-0.5 rounded text-[10px] font-bold transition-all text-slate-400 hover:text-white" title="High-Contrast Spotlight">Spot</button>
+              <button type="button" id="btn-light-cyber" onclick="setStudioLighting('cyber', this)" class="px-2 py-0.5 rounded text-[10px] font-bold transition-all text-slate-400 hover:text-white" title="Cyan Cyber Gradient">Cyber</button>
+            </div>
+          </div>
+
+          <!-- 3D Perspective Canvas Box -->
+          <div class="studio-canvas-wrapper">
+            <div 
+              id="studio-canvas-box" 
+              class="customizer-canvas-box studio-3d-card studio-3d-active studio-lighting-neutral texture-french-terry cursor-crosshair"
+              onmousemove="handleStudio3DTilt(event)"
+              onmouseleave="resetStudio3DTilt()"
+            >
+              
+              <!-- SVG Garment Silhouette -->
+              <svg id="garment-svg" viewBox="0 0 240 240" class="garment-svg-silhouette" fill="#0B1120">
+                <g id="garment-svg-group">
+                  <path id="garment-svg-path" d="M 60,65 Q 90,35 120,40 Q 150,35 180,65 L 215,100 L 195,125 L 175,105 L 175,210 L 65,210 L 65,105 L 45,125 L 25,100 Z" stroke="#38bdf8" stroke-width="2"/>
+                  <path id="garment-svg-details" d="M 95,45 Q 120,70 145,45 M 85,150 L 155,150 L 165,195 L 75,195 Z" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3"/>
+                </g>
+              </svg>
+
+              <!-- Dynamic Logo / Artwork Overlay with 3D Tactile Filter Class -->
+              <img 
+                id="customizer-logo-overlay" 
+                src="assets/images/saz-logo-icon.png" 
+                alt="Custom Artwork Placement" 
+                class="customizer-logo-overlay logo-pos-chest-center finish-3d-puff" 
+              />
+
+              <!-- Live Tilt HUD Indicator -->
+              <div class="absolute top-3 right-3 bg-slate-900/90 text-sky-400 font-mono text-[10px] px-2.5 py-1 rounded-full border border-sky-500/30 flex items-center gap-1.5 shadow-lg pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="studio-tilt-hud">3D Tilt: 0° / 0°</span>
+              </div>
+
+              <!-- Live Position & Angle Indicator -->
+              <div class="absolute bottom-3 left-3 bg-slate-900/90 text-sky-300 font-mono text-[11px] px-2.5 py-1 rounded border border-white/10 pointer-events-none flex items-center gap-2">
+                <span>View: <strong id="studio-view-indicator" class="text-white">3D Dynamic</strong></span>
+                <span class="text-slate-500">|</span>
+                <span>Pos: <strong id="customizer-active-placement" class="text-white">Chest Center</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artwork Upload & Transform Controls (Scale, Rotation & Alignment) -->
+          <div class="space-y-3 pt-2">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Upload Your Logo / Sketch File</label>
+              <label class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-sky-400/40 hover:border-sky-300 bg-slate-900/80 cursor-pointer transition-all">
+                <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                <span class="text-xs font-bold text-white">Click to Upload PNG / JPG / SVG</span>
+                <input type="file" id="customizer-logo-upload" accept="image/*" class="hidden" />
+              </label>
+            </div>
+
+            <!-- Artwork Transform Sliders: Scale & Rotation -->
+            <div class="p-3 bg-slate-900/70 rounded-xl border border-white/5 space-y-2.5">
+              <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-sky-300">
+                <span>Artwork Scale</span>
+                <span id="artwork-scale-val" class="font-mono text-white">100%</span>
+              </div>
+              <input type="range" id="artwork-scale-slider" min="50" max="160" value="100" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer" />
+
+              <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-sky-300 pt-1">
+                <span>Artwork Rotation</span>
+                <span id="artwork-rot-val" class="font-mono text-white">0°</span>
+              </div>
+              <input type="range" id="artwork-rot-slider" min="-180" max="180" value="0" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer" />
+
+              <div class="pt-1 flex items-center justify-between text-[10px] text-slate-400">
+                <span>Center Alignment: Locked</span>
+                <button type="button" onclick="resetArtworkTransform()" class="text-sky-400 hover:text-sky-300 font-bold underline">Reset Scale &amp; Angle</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Studio Controls & Spec Builder -->
+        <div class="lg:col-span-7 navy-card p-6 sm:p-8 space-y-6 reveal-on-scroll">
+          
+          <div class="border-b border-white/10 pb-4 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="font-headline text-xl font-bold text-white uppercase tracking-tight">Garment Specification Engine</h3>
+              <p class="font-serif italic text-xs text-slate-300 mt-0.5">Configure your production tech-pack parameters below. Universal MOQ: 30 pcs.</p>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-sky-500/10 border border-sky-400/30 text-sky-300 font-mono text-xs font-bold">MOQ 30 Pcs</span>
+          </div>
+
+          <!-- 1. Garment Silhouette -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-sky-300 mb-2">1. Select Garment Silhouette</label>
+            <select id="customizer-garment-select" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-sm text-white focus:outline-none focus:border-sky-400 font-bold">
+              <option value="hoodie">Heavyweight Hoodie (450 GSM French Terry)</option>
+              <option value="tshirt">Oversized Vintage T-Shirt (240 GSM)</option>
+              <option value="jacket">Bespoke Cowhide Leather Biker Jacket</option>
+              <option value="stringer">Athletic Deep-Cut Gym Stringer</option>
+              <option value="jersey">Full-Sublimation Sports Jersey</option>
+              <option value="snapback">Custom 6-Panel Snapback &amp; Dad Hat</option>
+              <option value="cargos">Tactical Multi-Pocket Cargo Pants</option>
+              <option value="leggings">Seamless Ribbed Scrunch Leggings (320 GSM)</option>
+              <option value="windbreaker">Technical Hooded Windbreaker (DWR Ripstop)</option>
+              <option value="gymgloves">Pro Tactical Fingerless Gym Gloves</option>
+              <option value="bikergloves">Handcrafted Leather Biker Gloves</option>
+            </select>
+          </div>
+
+          <!-- 2. Real-Time Material & Fabric Engine -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-sky-300">2. Real-Time Material &amp; Fabric Engine</label>
+              <span id="customizer-fabric-badge" class="text-[11px] font-mono text-sky-400 bg-sky-950/70 px-2 py-0.5 rounded border border-sky-500/30">French Terry Texture</span>
+            </div>
+            <select id="customizer-fabric-select" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-xs text-white focus:outline-none focus:border-sky-400 font-bold">
+              <option value="texture-french-terry">450 GSM Heavy French Terry (100% Combed Cotton)</option>
+              <option value="texture-fleece">Heavy 400 GSM Fleece (Brushed Thermal Interior)</option>
+              <option value="texture-nappa-leather">Genuine Nappa Cowhide Leather (1.2mm Drum-Dyed)</option>
+              <option value="texture-yoga-spandex">Buttery Soft Yoga Spandex (320 GSM 4-Way Stretch)</option>
+              <option value="texture-ripstop">DWR Technical Ripstop Windbreaker (Diamond Weave)</option>
+            </select>
+          </div>
+
+          <!-- 3. Garment Base Color & Pantone -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-sky-300">3. Garment Base Color</label>
+              <span id="customizer-color-label" class="text-xs font-mono text-slate-400">Midnight Navy (#0B1120)</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <button type="button" class="customizer-color-swatch swatch-btn active bg-[#0b1120]" data-hex="#0B1120" data-name="Midnight Navy" title="Midnight Navy"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#111111]" data-hex="#111111" data-name="Jet Black" title="Jet Black"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#ffffff]" data-hex="#FFFFFF" data-name="Chalk White" title="Chalk White"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#64748b]" data-hex="#64748B" data-name="Heather Grey" title="Heather Grey"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#3f4a3c]" data-hex="#3F4A3C" data-name="Olive Drab" title="Olive Drab"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#2563eb]" data-hex="#2563EB" data-name="Cobalt Royal" title="Cobalt Royal"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#7f1d1d]" data-hex="#7F1D1D" data-name="Vintage Maroon" title="Maroon"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#c2a675]" data-hex="#C2A675" data-name="Desert Sand" title="Desert Sand"></button>
+              <button type="button" class="customizer-color-swatch swatch-btn bg-[#d97706]" data-hex="#D97706" data-name="Amber Ochre" title="Amber Ochre"></button>
+              <input type="color" id="customizer-color-picker" value="#0B1120" class="w-7 h-7 rounded-full border border-white/20 cursor-pointer bg-transparent" title="Custom Color Picker" />
+            </div>
+            <input 
+              type="text" 
+              id="customizer-pantone" 
+              placeholder="Or enter custom Pantone code / Hex (e.g. 19-4052 TCX or #2563EB)..." 
+              class="w-full px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400"
+            />
+          </div>
+
+          <!-- 4. Placement & Decoration Technique -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-sky-300 mb-1">4. Placement Zone</label>
+              <select id="customizer-placement-select" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-white/10 text-xs text-white focus:outline-none focus:border-sky-400">
+                <option value="Chest Center">Chest Center</option>
+                <option value="Left Chest">Left Chest</option>
+                <option value="Full Back">Full Back</option>
+                <option value="Sleeve">Sleeve</option>
+                <option value="Waistband / Hem">Waistband / Hem</option>
+                <option value="Hood / Collar">Hood / Collar</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-sky-300 mb-1">5. Decoration Technique</label>
+              <select id="customizer-finish-select" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-white/10 text-xs text-white focus:outline-none focus:border-sky-400">
+                <option value="finish-3d-puff">3D Puff Screen Print</option>
+                <option value="finish-screen-print">High-Density Screen Print</option>
+                <option value="finish-dtg">Photorealistic DTG</option>
+                <option value="finish-3d-puff">3D Raised Puff Embroidery</option>
+                <option value="finish-chenille">Chenille Towel Patches</option>
+                <option value="finish-woven-tag">Custom Woven Neck Tags</option>
+                <option value="finish-debossed-leather">Debossed Leather Labels</option>
+                <option value="finish-metallic">Metallic High-Glow Foil</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 5. Size Breakdown Matrix (XS to 3XL) -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-sky-300">6. Size Breakdown (XS to 3XL)</label>
+              <span id="customizer-total-qty" class="text-xs font-bold font-mono text-emerald-400">60 Pieces Total</span>
+            </div>
+            <div class="grid grid-cols-4 sm:grid-cols-7 gap-2">
+              <div class="text-center bg-slate-900 p-2 rounded-lg border border-white/10">
+                <div class="text-[10px] text-slate-400 font-bold mb-1">XS</div>
+                <input type="number" min="0" value="5" data-size="XS" class="customizer-size-input w-full bg-slate-800 text-center text-xs font-bold rounded py-1 text-white border border-white/10 focus:outline-none focus:border-sky-400" />
+              </div>
+              <div class="text-center bg-slate-900 p-2 rounded-lg border border-white/10">
+                <div class="text-[10px] text-slate-400 font-bold mb-1">S</div>
+                <input type="number" min="0" value="10" data-size="S" class="customizer-size-input w-full bg-slate-800 text-center text-xs font-bold rounded py-1 text-white border border-white/10 focus:outline-none focus:border-sky-400" />
+              </div>
+              <div class="text-center bg-slate-900 p-2 rounded-lg border border-white/10">
+                <div class="text-[10px] text-slate-400 font-bold mb-1">M</div>
+                <input type="number" min="0" value="15" data-size="M" class="customizer-size-input w-full bg-slate-800 text-center text-xs font-bold rounded py-1 text-white border border-white/10 focus:outline-none focus:border-sky-400" />
+              </div>
+              <div class="text-center bg-slate-900 p-2 rounded-lg border border-white/10">
+                <div class="text-[10px] text-slate-400 font-bold mb-1">L</div>
+                <input type="number" min="0" value="15" data-size="L" class="customizer-size-input w-full bg-slate-800 text-center text-xs font-bold rounded py-1 text-white border border-white/10 focus:outline-none focus:border-sky-400" />
+              </div>
+              <div class="text-center bg-slate-900 p-2 rounded-lg border border-white/10">
+                <div class="text-[10px] text-slate-400 font-bold mb-1">XL</div>
+                <input type="number" min="0" value="10" data-size="XL" class="customizer-size-input w-full bg-slate-800 text-center text-xs font-bold rounded py-1 text-white border border-white/10 focus:outline-none focus:border-sky-400" />
+              </div>
+              <div class="text-center bg-slate-900 p-2 rounded-lg border border-white/10">
+                <div class="text-[10px] text-slate-400 font-bold mb-1">2XL</div>
+                <input type="number" min="0" value="5" data-size="2XL" class="customizer-size-input w-full bg-slate-800 text-center text-xs font-bold rounded py-1 text-white border border-white/10 focus:outline-none focus:border-sky-400" />
+              </div>
+              <div class="text-center bg-slate-900 p-2 rounded-lg border border-white/10">
+                <div class="text-[10px] text-slate-400 font-bold mb-1">3XL</div>
+                <input type="number" min="0" value="0" data-size="3XL" class="customizer-size-input w-full bg-slate-800 text-center text-xs font-bold rounded py-1 text-white border border-white/10 focus:outline-none focus:border-sky-400" />
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-400 mt-2 font-mono">Universal MOQ: Minimum 30 pieces total per design/colorway.</div>
+          </div>
+
+          <!-- Real-Time Production Tech Pack Preview Card -->
+          <div class="p-4 rounded-xl bg-slate-950/70 border border-sky-500/25 space-y-2.5">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2">
+              <div class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-sky-400">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span>Production Tech Pack Preview</span>
+              </div>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Live Spec</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono">
+              <div class="text-slate-400">Garment: <span id="techpack-garment" class="text-white font-bold">Heavyweight Hoodie</span></div>
+              <div class="text-slate-400">Fabric: <span id="techpack-fabric" class="text-sky-300 font-bold">450 GSM French Terry</span></div>
+              <div class="text-slate-400">Color: <span id="techpack-color" class="text-white font-bold">Midnight Navy (#0B1120)</span></div>
+              <div class="text-slate-400">Technique: <span id="techpack-finish" class="text-sky-300 font-bold">3D Puff Screen Print</span></div>
+              <div class="text-slate-400">Placement: <span id="techpack-placement" class="text-white font-bold">Chest Center</span></div>
+              <div class="text-slate-400">Scale / Angle: <span id="techpack-transform" class="text-sky-300 font-bold">100% | 0°</span></div>
+            </div>
+          </div>
+
+          <!-- Direct Export & Submission CTAs -->
+          <div class="pt-2 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button 
+              id="customizer-submit-whatsapp" 
+              class="btn-whatsapp-green w-full py-3.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
+            >
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.53 1.76.812 2.796.813h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.768-5.773-5.768zm3.364 8.163c-.14.394-.814.729-1.127.777-.314.048-.724.072-2.348-.601-1.378-.57-2.268-1.975-2.337-2.067-.068-.093-.56-.745-.56-1.42 0-.676.353-1.008.479-1.146.126-.139.274-.174.366-.174.093 0 .185.001.266.005.086.004.202-.033.315.24.116.279.394.965.428 1.036.035.07.058.152.012.244-.047.093-.07.151-.14.232-.07.081-.146.182-.209.244-.07.069-.143.144-.061.284.081.139.362.597.777.967.534.475.984.622 1.124.692.14.07.221.058.303-.035.081-.093.349-.406.442-.546.093-.139.186-.116.314-.07.128.047.814.384.954.454.14.07.233.104.267.162.035.059.035.343-.105.737z"/></svg>
+              <span>Send Tech Pack via WhatsApp</span>
+            </button>
+            <button 
+              id="customizer-submit-email" 
+              class="btn-electric-blue w-full py-3.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
+            >
+              <span>Submit via Email Form</span> &rarr;
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <!-- 8. STRICT 8-STEP MANUFACTURING PROCESS -->
+  <section id="process" class="py-24 bg-[#0f172a] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+        <span class="text-xs uppercase tracking-widest font-bold text-sky-400">Structured Production</span>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase">
+          Our manufacturing process.
+        </h2>
+        <p class="font-serif italic text-sky-200 text-base">
+          A structured, transparent path from your first idea to a shipped, finished garment.
+        </p>
+      </div>
+
+      <!-- 8 Clean Blue Indicator Steps with Interactive Hover Glow -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 01 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              01
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 1</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">01 Design & Consultation</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            We start with your concept, references or tech pack and align on scope.
+          </p>
+        </div>
+
+        <!-- 02 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              02
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 2</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">02 Fabric & Material Selection</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Sourcing the right fabric weight, composition and finish for your product.
+          </p>
+        </div>
+
+        <!-- 03 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              03
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 3</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">03 Sampling</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            A physical sample is produced for your review and approval before bulk.
+          </p>
+        </div>
+
+        <!-- 04 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              04
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 4</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">04 Pattern & Cutting</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Patterns are graded and fabric is cut to precise specification.
+          </p>
+        </div>
+
+        <!-- 05 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              05
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 5</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">05 Production</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Garments move through sewing and construction on the production floor.
+          </p>
+        </div>
+
+        <!-- 06 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              06
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 6</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">06 Quality Control</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Every batch is checked against approved samples and specifications.
+          </p>
+        </div>
+
+        <!-- 07 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              07
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 7</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">07 Packaging</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Finished garments are folded, tagged and packed to your requirements.
+          </p>
+        </div>
+
+        <!-- 08 -->
+        <div class="navy-card p-6 border border-sky-500/20 relative timeline-step interactive-glow-card reveal-on-scroll">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-full bg-blue-600 text-white font-headline text-sm flex items-center justify-center timeline-dot-active shadow-lg shadow-blue-500/40">
+              08
+            </span>
+            <span class="text-xs text-sky-400 font-mono">Stage 8</span>
+          </div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">08 Shipping</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Completed orders are prepared and shipped to your destination.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. WHY BRANDS CHOOSE SAZ WEARZ -->
+  <section id="why-us" class="py-24 bg-[#0b1120] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+        <span class="text-xs uppercase tracking-widest font-bold text-sky-400">Competitive Edge</span>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase">
+          Why Brands Choose <span class="brand-contrast">SAZ WEARZ</span>
+        </h2>
+        <p class="font-serif italic text-sky-200 text-base">
+          Built from the ground up to solve the real bottlenecks fashion labels face.
+        </p>
+      </div>
+
+      <!-- 8 Pillars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 01 -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">01</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">01. Premium Quality</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Consistent construction and finishing on every order.
+          </p>
+        </div>
+
+        <!-- 02 -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">02</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">02. Custom Manufacturing</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Production built entirely around your specification.
+          </p>
+        </div>
+
+        <!-- 03 -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">03</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">03. Reliable Production</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Predictable, well-managed production timelines.
+          </p>
+        </div>
+
+        <!-- 04 -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">04</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">04. Quality Control</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Structured inspection at every stage of the process.
+          </p>
+        </div>
+
+        <!-- 05 (Low MOQ 30 Pieces) -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">05</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">05. Low MOQ (30 Pieces)</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Flexible minimum order quantity of just 30 pieces per style to help emerging brands scale with confidence.
+          </p>
+        </div>
+
+        <!-- 06 -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">06</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">06. Competitive Pricing</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Manufacturing pricing built for scale and margin.
+          </p>
+        </div>
+
+        <!-- 07 -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">07</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">07. Professional Communication</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Clear, responsive updates from quote to shipping.
+          </p>
+        </div>
+
+        <!-- 08 -->
+        <div class="navy-card p-6 border-t-2 border-t-blue-500 interactive-glow-card reveal-on-scroll">
+          <div class="text-sky-400 font-mono font-bold text-sm mb-2">08</div>
+          <h3 class="font-headline text-base font-bold text-white mb-2 uppercase">08. On-Time Delivery</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-body">
+            Production planned to meet your launch timeline.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT US SECTION (FOUNDER & FACILITY HERITAGE) -->
+  <section id="about" class="py-24 bg-[#0f172a] relative border-t border-white/5">
+    <div id="facility"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/40 bg-sky-950/60 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-xs uppercase tracking-widest font-bold text-sky-300">About <span class="brand-contrast">SAZ WEARZ</span></span>
+        </div>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase leading-tight">
+          Precision Apparel Manufacturing Built on Half a Decade of Craftsmanship
+        </h2>
+        <p class="font-serif italic text-sky-200 text-base sm:text-lg">
+          Founded by Subhan &bull; Over 5&ndash;6 Years of Garment Export Excellence
+        </p>
+      </div>
+
+      <!-- Split 2-Column Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Factory Floor Imagery and Key Operational Badges -->
+        <div class="lg:col-span-6 space-y-6 reveal-on-scroll">
+          
+          <!-- Image Frame with Overlay Badges -->
+          <div class="relative rounded-2xl overflow-hidden border border-sky-500/30 shadow-2xl shadow-blue-950/50 group">
+            <img 
+              src="assets/images/saz-factory-floor-craftsmanship.jpg" 
+              alt="Precision Apparel Manufacturing Floor - Saz Wearz Sialkot Pakistan" 
+              class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-80 pointer-events-none"></div>
+
+            <!-- Top Floating Origin Tag -->
+            <div class="absolute top-4 left-4 bg-blue-600/90 backdrop-blur-md text-white font-mono text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/10 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>Sialkot Production Floor &bull; Active</span>
+            </div>
+
+            <!-- Bottom Floating Unit Card -->
+            <div class="absolute bottom-4 left-4 right-4 p-4 bg-slate-900/90 backdrop-blur-md rounded-xl border border-white/10 text-xs text-slate-300 shadow-xl flex items-center justify-between">
+              <div>
+                <div class="font-serif font-bold text-white text-sm"><span class="brand-contrast">SAZ WEARZ</span> Factory Unit</div>
+                <div class="text-[11px] text-slate-400">Sialkot Apparel Cluster, Punjab, Pakistan</div>
+              </div>
+              <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-md border border-emerald-500/30 font-bold">
+                Export Certified
+              </span>
+            </div>
+          </div>
+
+          <!-- 4 Key Metric Badges Grid (2x2) -->
+          <div class="grid grid-cols-2 gap-4">
+            
+            <!-- Badge 1: 5-6 Years Industry Experience -->
+            <div class="navy-card p-4 sm:p-5 border border-sky-400/20 card-hover-glow flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-sky-400/30 flex items-center justify-center text-sky-400 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="font-headline text-lg sm:text-xl font-bold text-white">5&ndash;6 Years</div>
+                <div class="text-xs text-slate-300 font-bold">Industry Experience</div>
+              </div>
+            </div>
+
+            <!-- Badge 2: AQL 2.5 Quality Standard -->
+            <div class="navy-card p-4 sm:p-5 border border-sky-400/20 card-hover-glow flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-emerald-600/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="font-headline text-lg sm:text-xl font-bold text-white">AQL 2.5</div>
+                <div class="text-xs text-slate-300 font-bold">Quality Standard</div>
+              </div>
+            </div>
+
+            <!-- Badge 3: 50+ Brands Worldwide Export -->
+            <div class="navy-card p-4 sm:p-5 border border-sky-400/20 card-hover-glow flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-400/30 flex items-center justify-center text-purple-400 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="font-headline text-lg sm:text-xl font-bold text-white">50+ Brands</div>
+                <div class="text-xs text-slate-300 font-bold">Worldwide Export</div>
+              </div>
+            </div>
+
+            <!-- Badge 4: 100% In-House Production in Sialkot -->
+            <div class="navy-card p-4 sm:p-5 border border-sky-400/20 card-hover-glow flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-cyan-600/20 border border-cyan-400/30 flex items-center justify-center text-cyan-400 shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <div class="font-headline text-lg sm:text-xl font-bold text-white">100% In-House</div>
+                <div class="text-xs text-slate-300 font-bold">Production in Sialkot</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Column: Company Story and Facility Specs -->
+        <div class="lg:col-span-6 space-y-6 text-left reveal-on-scroll">
+          
+          <div class="space-y-4 font-body text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Founded by Subhan, <span class="brand-contrast">SAZ WEARZ</span> has spent the past 5 to 6 years serving as a reliable manufacturing partner for emerging streetwear labels, gymwear powerhouses, and leather brands across the globe.
+            </p>
+            <p>
+              Located in Sialkot's premier apparel cluster, our specialized manufacturing unit is engineered for end-to-end production: housing automated fabric laser spreaders, multi-head Tajima computerized embroidery stations, precision sublimation units, and strict AQL 2.5 in-line inspection tables.
+            </p>
+            <p>
+              We operate on absolute transparency, offering direct factory communication, low 30-piece MOQs, and reliable global dispatch directly from our Sialkot factory floor.
+            </p>
+          </div>
+
+          <!-- Machinery & Technical Capability Pills -->
+          <div class="p-5 rounded-2xl bg-slate-900/90 border border-white/10 space-y-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-sky-400">In-House Manufacturing Infrastructure</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-200">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                <span>Automated Fabric Laser Spreaders</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                <span>Multi-Head Tajima Embroidery</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                <span>Precision Digital Sublimation Units</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                <span>Strict AQL 2.5 In-Line Inspection</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dual CTA Buttons -->
+          <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a 
+              href="https://wa.me/923010850746?text=Hi%20Subhan%20%26%20Saz%20Wearz%20Team%2C%20I%20would%20like%20to%20discuss%20custom%20apparel%20manufacturing%20for%20my%20brand." 
+              target="_blank" 
+              class="btn-whatsapp-green px-7 py-3.5 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
+            >
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.53 1.76.812 2.796.813h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.768-5.773-5.768zm3.364 8.163c-.14.394-.814.729-1.127.777-.314.048-.724.072-2.348-.601-1.378-.57-2.268-1.975-2.337-2.067-.068-.093-.56-.745-.56-1.42 0-.676.353-1.008.479-1.146.126-.139.274-.174.366-.174.093 0 .185.001.266.005.086.004.202-.033.315.24.116.279.394.965.428 1.036.035.07.058.152.012.244-.047.093-.07.151-.14.232-.07.081-.146.182-.209.244-.07.069-.143.144-.061.284.081.139.362.597.777.967.534.475.984.622 1.124.692.14.07.221.058.303-.035.081-.093.349-.406.442-.546.093-.139.186-.116.314-.07.128.047.814.384.954.454.14.07.233.104.267.162.035.059.035.343-.105.737z"/></svg>
+              <span>Chat on WhatsApp Desk</span>
+            </a>
+            <a href="#categories" class="btn-glass-outline px-6 py-3.5 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+              <span>Explore Garment Catalog</span> &rarr;
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. UNIFIED GLOBAL PROOF, MAP & CLIENT REVIEWS SECTION (CONSOLIDATED INTO ONE SECTION) -->
+  <section id="global-proof" class="py-24 bg-[#0b1120] border-t border-white/5 relative">
+    <div id="global-map"></div>
+    <div id="reviews"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+        <span class="text-xs uppercase tracking-widest font-bold text-sky-400">Global Verification</span>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase">
+          Trusted by 50+ Global Apparel Brands
+        </h2>
+        <p class="font-serif italic text-sky-200 text-base sm:text-lg">
+          USA &bull; UK &bull; Australia &bull; Germany &bull; Canada &bull; Europe
+        </p>
+      </div>
+
+      <!-- Realistic Global Vector Map Radiating Directly from Sialkot -->
+      <div class="relative p-6 sm:p-10 rounded-3xl bg-slate-900/80 border border-sky-500/20 shadow-2xl reveal-on-scroll">
+        
+        <div class="relative w-full" style="min-height: 420px;">
+          <svg viewBox="0 0 1000 500" class="w-full h-auto text-slate-800" fill="currentColor">
+            <!-- Landmass Shapes -->
+            <path d="M 120,80 Q 180,60 260,80 Q 280,120 270,180 Q 230,220 180,240 Q 140,200 110,140 Z" fill="#131e33" stroke="#2563eb" stroke-width="0.8" opacity="0.8"/>
+            <path d="M 180,250 Q 200,280 230,340 Q 200,380 170,320 Z" fill="#131e33" stroke="#2563eb" stroke-width="0.8" opacity="0.8"/>
+            <path d="M 240,290 Q 300,320 280,420 Q 230,460 210,380 Z" fill="#131e33" stroke="#2563eb" stroke-width="0.8" opacity="0.7"/>
+            <path d="M 450,90 Q 520,70 560,110 Q 530,170 470,160 Q 440,120 450,90 Z" fill="#131e33" stroke="#2563eb" stroke-width="0.8" opacity="0.85"/>
+            <path d="M 460,190 Q 540,190 560,260 Q 530,360 480,380 Q 440,300 460,190 Z" fill="#131e33" stroke="#2563eb" stroke-width="0.8" opacity="0.7"/>
+            <path d="M 570,80 Q 750,70 820,150 Q 780,240 680,220 Q 610,250 560,180 Z" fill="#131e33" stroke="#2563eb" stroke-width="0.8" opacity="0.85"/>
+            <path d="M 770,320 Q 860,310 880,380 Q 820,430 760,390 Z" fill="#131e33" stroke="#2563eb" stroke-width="0.8" opacity="0.8"/>
+
+            <!-- Radiating Flight Arcs from Sialkot (650, 185) -->
+            <path d="M 650,185 Q 440,80 230,150" fill="none" stroke="#38bdf8" stroke-width="1.8" class="flight-arc"/>
+            <path d="M 650,185 Q 560,110 480,120" fill="none" stroke="#38bdf8" stroke-width="1.8" class="flight-arc"/>
+            <path d="M 650,185 Q 570,125 510,130" fill="none" stroke="#38bdf8" stroke-width="1.8" class="flight-arc"/>
+            <path d="M 650,185 Q 430,60 210,110" fill="none" stroke="#38bdf8" stroke-width="1.8" class="flight-arc"/>
+            <path d="M 650,185 Q 750,250 820,360" fill="none" stroke="#38bdf8" stroke-width="1.8" class="flight-arc"/>
+
+            <!-- Sialkot Origin Beacon -->
+            <circle cx="650" cy="185" r="16" fill="none" stroke="#38bdf8" class="radar-pulse-ring"/>
+            <circle cx="650" cy="185" r="6" fill="#2563eb"/>
+            <circle cx="650" cy="185" r="3" fill="#ffffff"/>
+            <text x="660" y="190" fill="#38bdf8" font-size="12" font-family="Lato" font-weight="bold">SIALKOT (ORIGIN HUB)</text>
+          </svg>
+
+          <!-- Interactive Pins -->
+          <button data-hub="usa" class="map-hub-pin absolute top-[30%] left-[23%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none" aria-label="USA Hub">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-lg shadow-sky-500/50 group-hover:scale-125 transition-transform inline-block"></span>
+            <span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white whitespace-nowrap bg-slate-900/90 px-1.5 py-0.5 rounded border border-white/10">USA</span>
+          </button>
+
+          <button data-hub="uk" class="map-hub-pin absolute top-[24%] left-[48%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none" aria-label="UK Hub">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-lg shadow-sky-500/50 group-hover:scale-125 transition-transform inline-block"></span>
+            <span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white whitespace-nowrap bg-slate-900/90 px-1.5 py-0.5 rounded border border-white/10">UK</span>
+          </button>
+
+          <button data-hub="germany" class="map-hub-pin absolute top-[26%] left-[51%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none" aria-label="Germany Hub">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-lg shadow-sky-500/50 group-hover:scale-125 transition-transform inline-block"></span>
+            <span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white whitespace-nowrap bg-slate-900/90 px-1.5 py-0.5 rounded border border-white/10">EU</span>
+          </button>
+
+          <button data-hub="canada" class="map-hub-pin absolute top-[22%] left-[21%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none" aria-label="Canada Hub">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-lg shadow-sky-500/50 group-hover:scale-125 transition-transform inline-block"></span>
+            <span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white whitespace-nowrap bg-slate-900/90 px-1.5 py-0.5 rounded border border-white/10">Canada</span>
+          </button>
+
+          <button data-hub="aus" class="map-hub-pin absolute top-[72%] left-[82%] -translate-x-1/2 -translate-y-1/2 group focus:outline-none" aria-label="Australia Hub">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-lg shadow-sky-500/50 group-hover:scale-125 transition-transform inline-block"></span>
+            <span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white whitespace-nowrap bg-slate-900/90 px-1.5 py-0.5 rounded border border-white/10">Australia</span>
+          </button>
+
+        </div>
+
+        <!-- Hub Tooltip Strip -->
+        <div id="map-hub-tooltip" class="mt-4 p-4 rounded-2xl bg-slate-950/90 border border-sky-400/40 text-left grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-sky-400 font-bold">Verified Buyer Destination</div>
+            <div id="map-tooltip-city" class="text-sm font-bold text-white mt-0.5 font-serif">United States (New York & Los Angeles)</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-sky-400 font-bold">Express DDP Transit</div>
+            <div id="map-tooltip-transit" class="text-sm font-bold text-emerald-400 mt-0.5">3&ndash;4 Business Days via DHL Express DDP</div>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-sky-400 font-bold">Active Footprint</div>
+            <div id="map-tooltip-brands" class="text-sm font-bold text-white mt-0.5">18+ Active Streetwear & Gymwear Labels</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3 Modern Testimonial Cards (Consolidated Directly into Unified Global Proof Section) -->
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="navy-card p-8 border border-sky-500/20 card-hover-glow flex flex-col justify-between reveal-on-scroll">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-900 text-sky-300 border border-white/10">USA &#127482;&#127480;</span>
+            </div>
+            <p class="font-serif italic text-slate-300 text-sm leading-relaxed">
+              "<span class="brand-contrast">SAZ WEARZ</span> produced our entire winter streetwear line. The heavyweight 450 GSM French Terry and puff print came out exact to spec. Flawless communication from Sialkot to the USA."
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+            <div>
+              <div class="font-headline text-sm font-bold text-white uppercase">Marcus K.</div>
+              <div class="text-xs text-sky-400 font-bold">New York (Streetwear Label)</div>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">Verified Client</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="navy-card p-8 border border-sky-500/20 card-hover-glow flex flex-col justify-between reveal-on-scroll">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-900 text-sky-300 border border-white/10">UK &#127468;&#127463;</span>
+            </div>
+            <p class="font-serif italic text-slate-300 text-sm leading-relaxed">
+              "Their leather wear production line is top class. The custom biker jackets and stitching quality are comparable to luxury fashion houses."
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+            <div>
+              <div class="font-headline text-sm font-bold text-white uppercase">Liam P.</div>
+              <div class="text-xs text-sky-400 font-bold">London (Apparel Director)</div>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">Verified Client</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="navy-card p-8 border border-sky-500/20 card-hover-glow flex flex-col justify-between reveal-on-scroll">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-900 text-sky-300 border border-white/10">Australia &#127462;&#127482;</span>
+            </div>
+            <p class="font-serif italic text-slate-300 text-sm leading-relaxed">
+              "Low MOQs allowed us to test 4 colorways of activewear without risking high capital. Fast shipping via DHL straight to Sydney."
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+            <div>
+              <div class="font-headline text-sm font-bold text-white uppercase">Elena R.</div>
+              <div class="text-xs text-sky-400 font-bold">Australia (Fitness Brand)</div>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">Verified Client</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. LOGISTICS & WORLDWIDE DELIVERY HUB -->
+  <section id="logistics" class="py-24 bg-[#0f172a] relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="p-8 sm:p-12 rounded-3xl bg-slate-900/80 border border-sky-400/30 text-center space-y-8 shadow-2xl reveal-on-scroll">
+        
+        <div class="max-w-3xl mx-auto space-y-3">
+          <span class="text-xs uppercase tracking-widest font-bold text-sky-400">Global Carrier Network</span>
+          <h2 class="font-headline text-3xl sm:text-4xl font-black text-white uppercase">
+            Door-to-Door Worldwide Delivery from Sialkot
+          </h2>
+          <p class="font-serif italic text-base text-sky-200">
+            Fast, insured international shipping with complete real-time tracking.
+          </p>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto">
+            Samples delivered in 3&ndash;5 working days; wholesale DDP air and ocean cargo available. All customs duties and export paperwork managed by <span class="brand-contrast">SAZ WEARZ</span>.
+          </p>
+        </div>
+
+        <!-- Integrated Carrier Logos Strip -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 max-w-5xl mx-auto">
+          
+          <!-- Card 1: DHL Express -->
+          <div class="navy-card p-6 border border-white/10 card-hover-glow flex flex-col items-center justify-between space-y-4 reveal-on-scroll">
+            <div class="w-full h-28 rounded-xl overflow-hidden flex items-center justify-center bg-[#FFCC00] shadow-md border border-amber-400/20 group">
+              <img 
+                src="assets/images/carrier-dhl-express.png" 
+                alt="DHL Express Worldwide Delivery" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+              />
+            </div>
+            <div class="space-y-1.5 w-full text-center">
+              <h3 class="font-headline text-lg font-bold text-white uppercase tracking-wider">DHL Express</h3>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs font-bold">
+                <span>Air Express &bull; 3&ndash;5 Working Days</span>
+              </div>
+              <p class="text-xs text-slate-400 pt-1">
+                Real-Time Doorstep Tracking &bull; Global Priority Air
+              </p>
+            </div>
+            <div class="w-full pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-bold">&bull; Daily Air Lift</span>
+              <span>DDP / DDU Available</span>
+            </div>
+          </div>
+
+          <!-- Card 2: FedEx Priority -->
+          <div class="navy-card p-6 border border-white/10 card-hover-glow flex flex-col items-center justify-between space-y-4 reveal-on-scroll">
+            <div class="w-full h-28 rounded-xl overflow-hidden flex items-center justify-center bg-white shadow-md border border-purple-400/20 p-2 group">
+              <img 
+                src="assets/images/carrier-fedex-express.png" 
+                alt="FedEx Express Priority Delivery" 
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" 
+              />
+            </div>
+            <div class="space-y-1.5 w-full text-center">
+              <h3 class="font-headline text-lg font-bold text-white uppercase tracking-wider">FedEx Priority</h3>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 font-mono text-xs font-bold">
+                <span>Priority Air Courier &bull; Insured</span>
+              </div>
+              <p class="text-xs text-slate-400 pt-1">
+                Direct Customs Pre-Clearance &bull; Fast-Track Transit
+              </p>
+            </div>
+            <div class="w-full pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-bold">&bull; Direct Hub Uplink</span>
+              <span>Full Cargo Insurance</span>
+            </div>
+          </div>
+
+          <!-- Card 3: SkyNet Worldwide -->
+          <div class="navy-card p-6 border border-white/10 card-hover-glow flex flex-col items-center justify-between space-y-4 reveal-on-scroll">
+            <div class="w-full h-28 rounded-xl overflow-hidden flex items-center justify-center bg-white shadow-md border border-sky-400/20 p-2 group">
+              <img 
+                src="assets/images/carrier-skynet-worldwide.png" 
+                alt="SkyNet Worldwide Express Delivery" 
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" 
+              />
+            </div>
+            <div class="space-y-1.5 w-full text-center">
+              <h3 class="font-headline text-lg font-bold text-white uppercase tracking-wider">SkyNet Worldwide</h3>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 font-mono text-xs font-bold">
+                <span>Express DDP &bull; Global Transit</span>
+              </div>
+              <p class="text-xs text-slate-400 pt-1">
+                Economical Bulk Solutions &bull; Air & Ocean Options
+              </p>
+            </div>
+            <div class="w-full pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-bold">&bull; Consolidated Freight</span>
+              <span>Door-to-Door DDP</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. B2B MANUFACTURING BLOG & FACTORY INSIGHTS -->
+  <section id="blog" class="py-24 bg-[#0f172a] relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/20 border border-blue-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider">
+          <span>Factory Knowledge &bull; Apparel Guides</span>
+        </div>
+        <h2 class="font-headline text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
+          Blogs
+        </h2>
+        <p class="font-serif italic text-sky-200 text-base max-w-2xl mx-auto">
+          Technical cut &amp; sew guides, fabric GSM comparisons, and global export strategies directly from our Sialkot factory floor.
+        </p>
+      </div>
+
+      <!-- Blog Cards Grid (4 Columns) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Post 1: Best Hoodie Manufacturers in Sialkot (2026 Sourcing Guide) -->
+        <article onclick="openBlogModal('hoodie-manufacturers-sialkot')" class="navy-card overflow-hidden group card-hover-glow flex flex-col justify-between reveal-on-scroll border border-white/10 hover:border-sky-400/50 transition-all duration-300 cursor-pointer">
+          <div class="relative overflow-hidden h-52 bg-slate-900">
+            <img 
+              src="assets/images/best-hoodie-manufacturers-sialkot.jpg" 
+              alt="Best Hoodie Manufacturers in Sialkot Pakistan - 2026 Sourcing Guide" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-70"></div>
+            <div class="absolute top-3 left-3 bg-blue-600/90 text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md">
+              Sourcing Guide
+            </div>
+            <div class="absolute top-3 right-3 bg-slate-900/90 text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded border border-white/10">
+              8 Min Read
+            </div>
+          </div>
+          
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px] font-mono text-slate-400">
+                <span>By Subhan &bull; Production Desk</span>
+                <span>&bull;</span>
+                <span class="text-sky-400">Sialkot Hub</span>
+              </div>
+              <h3 class="font-headline text-lg sm:text-xl font-bold text-white uppercase leading-snug group-hover:text-sky-300 transition-colors">
+                Best Hoodie Manufacturers in Sialkot, Pakistan: The Ultimate 2026 Sourcing Guide
+              </h3>
+              <p class="font-body text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">
+                When international fashion labels and independent streetwear brands look for premium manufacturing partners, Sialkot is the global epicenter. Top 5 vetted manufacturers evaluated on fabric GSM, low MOQs, and private label execution.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <button 
+                type="button" 
+                onclick="openBlogModal('hoodie-manufacturers-sialkot')" 
+                class="text-xs font-bold uppercase tracking-wider text-sky-400 hover:text-white flex items-center gap-1.5 transition-colors group-hover:translate-x-0.5 duration-200"
+              >
+                <span>Read Full Technical Guide</span>
+                <span>&rarr;</span>
+              </button>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-500/30">Free Guide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article onclick="openBlogModal('french-terry')" class="navy-card overflow-hidden group card-hover-glow flex flex-col justify-between reveal-on-scroll border border-white/10 hover:border-sky-400/50 transition-all duration-300 cursor-pointer">
+          <div class="relative overflow-hidden h-52 bg-slate-900">
+            <img 
+              src="assets/images/streetwear-collection.jpg" 
+              alt="Heavyweight French Terry Streetwear Fabric" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-70"></div>
+            <div class="absolute top-3 left-3 bg-blue-600/90 text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md">
+              Fabric Engineering
+            </div>
+            <div class="absolute top-3 right-3 bg-slate-900/90 text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded border border-white/10">
+              5 Min Read
+            </div>
+          </div>
+          
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px] font-mono text-slate-400">
+                <span>By Subhan &bull; Production Desk</span>
+                <span>&bull;</span>
+                <span class="text-sky-400">Sialkot Hub</span>
+              </div>
+              <h3 class="font-headline text-lg sm:text-xl font-bold text-white uppercase leading-snug group-hover:text-sky-300 transition-colors">
+                Mastering 450–500 GSM French Terry: Why Luxury Streetwear Demands Combed Cotton
+              </h3>
+              <p class="font-body text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">
+                How loopback knit structure, carbon peach finishing, and combed cotton yarn density eliminate boxy stiffness while maintaining the structured luxury drape streetwear labels require.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <button 
+                type="button" 
+                onclick="openBlogModal('french-terry')" 
+                class="text-xs font-bold uppercase tracking-wider text-sky-400 hover:text-white flex items-center gap-1.5 transition-colors group-hover:translate-x-0.5 duration-200"
+              >
+                <span>Read Full Technical Guide</span>
+                <span>&rarr;</span>
+              </button>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-500/30">Free Guide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article onclick="openBlogModal('embellishment-guide')" class="navy-card overflow-hidden group card-hover-glow flex flex-col justify-between reveal-on-scroll border border-white/10 hover:border-sky-400/50 transition-all duration-300 cursor-pointer">
+          <div class="relative overflow-hidden h-52 bg-slate-900">
+            <img 
+              src="assets/images/embroidery-craft.jpg" 
+              alt="Industrial 3D Puff and Chenille Embroidery" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-70"></div>
+            <div class="absolute top-3 left-3 bg-purple-600/90 text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md">
+              Embellishment Tech
+            </div>
+            <div class="absolute top-3 right-3 bg-slate-900/90 text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded border border-white/10">
+              6 Min Read
+            </div>
+          </div>
+          
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px] font-mono text-slate-400">
+                <span>By Subhan &bull; Master Patternmaker</span>
+                <span>&bull;</span>
+                <span class="text-purple-400">Embroidery Lab</span>
+              </div>
+              <h3 class="font-headline text-lg sm:text-xl font-bold text-white uppercase leading-snug group-hover:text-sky-300 transition-colors">
+                3D Puff vs. High-Density Screen vs. Chenille: Which Embellishment Fits Your Tech Pack?
+              </h3>
+              <p class="font-body text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">
+                A technical comparison of EVA foam density for 3D puff embroidery, cure temperatures for high-density plastisol prints, and loop yarn counts for varsity towel patches.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <button 
+                type="button" 
+                onclick="openBlogModal('embellishment-guide')" 
+                class="text-xs font-bold uppercase tracking-wider text-sky-400 hover:text-white flex items-center gap-1.5 transition-colors group-hover:translate-x-0.5 duration-200"
+              >
+                <span>Read Full Technical Guide</span>
+                <span>&rarr;</span>
+              </button>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-500/30">Free Guide</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article onclick="openBlogModal('ddp-logistics')" class="navy-card overflow-hidden group card-hover-glow flex flex-col justify-between reveal-on-scroll border border-white/10 hover:border-sky-400/50 transition-all duration-300 cursor-pointer">
+          <div class="relative overflow-hidden h-52 bg-slate-900">
+            <img 
+              src="assets/images/packaging-branding.jpg" 
+              alt="Custom Apparel Packaging and Global Export Logistics" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-70"></div>
+            <div class="absolute top-3 left-3 bg-emerald-600/90 text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md">
+              Export Logistics
+            </div>
+            <div class="absolute top-3 right-3 bg-slate-900/90 text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded border border-white/10">
+              4 Min Read
+            </div>
+          </div>
+          
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px] font-mono text-slate-400">
+                <span>By Subhan &bull; Export Logistics</span>
+                <span>&bull;</span>
+                <span class="text-emerald-400">Global DDP</span>
+              </div>
+              <h3 class="font-headline text-lg sm:text-xl font-bold text-white uppercase leading-snug group-hover:text-sky-300 transition-colors">
+                Sialkot to Global Doorstep: Navigating DDP Air &amp; Ocean Freight for Low MOQ Brands
+              </h3>
+              <p class="font-body text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">
+                How Delivered Duty Paid (DDP) eliminates customs friction, managing HS codes, import tariffs, and doorstep delivery directly to the USA, UK, and European warehouses.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <button 
+                type="button" 
+                onclick="openBlogModal('ddp-logistics')" 
+                class="text-xs font-bold uppercase tracking-wider text-sky-400 hover:text-white flex items-center gap-1.5 transition-colors group-hover:translate-x-0.5 duration-200"
+              >
+                <span>Read Full Technical Guide</span>
+                <span>&rarr;</span>
+              </button>
+              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-500/30">Free Guide</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Bottom Interactive Factory Notice / Direct Consultation CTA -->
+      <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-sky-500/30 reveal-on-scroll flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center md:text-left">
+          <div class="text-xs font-bold uppercase tracking-wider text-sky-400">Have a Custom Technical Specification in Mind?</div>
+          <h4 class="font-headline text-xl font-bold text-white uppercase">Consult Our Sialkot Patternmaking Desk Directly</h4>
+          <p class="font-serif italic text-xs text-slate-300">We work directly from tech packs, vector mockups, and physical reference garments.</p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="#quote" class="btn-electric-blue px-6 py-3 text-xs font-bold uppercase tracking-wider">
+            <span>Request Factory Quote</span> &rarr;
+          </a>
+          <a href="https://wa.me/923010850746?text=Hi%20Subhan%20%26%20Saz%20Wearz%20Team%2C%20I%20read%20your%20manufacturing%20guides%20and%20would%20like%20to%20discuss%20fabric%20and%20prototyping." target="_blank" class="btn-whatsapp-green px-6 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. INTERACTIVE BLOG ARTICLE READER MODAL -->
+  <div id="blog-modal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-md hidden p-4 sm:p-6 lg:p-10 flex items-center justify-center">
+    <div class="navy-card max-w-5xl w-full p-6 sm:p-8 lg:p-10 border border-sky-400/40 relative shadow-2xl space-y-6 my-auto max-h-[92vh] overflow-y-auto">
+      
+      <!-- Top Bar: Back to Articles & Close Button -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <button type="button" onclick="closeBlogModal()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-400 hover:text-white bg-slate-900 border border-sky-400/30 px-4 py-2 rounded-xl transition-all shadow-md">
+          <span>&larr; Back to Manufacturing Insights</span>
+        </button>
+        <span id="blog-modal-category" class="text-xs font-mono text-sky-300 font-bold hidden sm:inline-block">
+          Technical Guide
+        </span>
+        <button type="button" onclick="closeBlogModal()" class="w-9 h-9 rounded-full bg-slate-900 border border-white/10 text-slate-400 hover:text-white hover:bg-slate-800 flex items-center justify-center text-lg font-bold transition-all" aria-label="Close article modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="space-y-6">
+        <!-- Hero Header -->
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400">
+            <span id="blog-modal-tag" class="px-2.5 py-0.5 rounded-full bg-blue-600/20 border border-blue-400/30 text-sky-300 font-bold">Category</span>
+            <span>&bull;</span>
+            <span id="blog-modal-time">5 Min Read</span>
+            <span>&bull;</span>
+            <span>Factory Origin: Sialkot, Pakistan</span>
+          </div>
+          <h2 id="blog-modal-title" class="font-headline text-2xl sm:text-3xl font-black text-white uppercase leading-tight">
+            Article Title
+          </h2>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="rounded-xl overflow-hidden h-64 sm:h-80 w-full bg-slate-900 border border-white/10">
+          <img id="blog-modal-img" src="" alt="Article Banner" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Article Content -->
+        <div id="blog-modal-content" class="space-y-4 font-body text-slate-300 text-sm sm:text-base leading-relaxed">
+          <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Actionable Manufacturing Takeaways Box -->
+        <div class="p-5 rounded-xl bg-slate-900/90 border border-sky-500/25 space-y-3">
+          <div class="text-xs font-bold uppercase tracking-wider text-sky-400 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Actionable Manufacturing Takeaways for Brands</span>
+          </div>
+          <ul id="blog-modal-takeaways" class="space-y-2 text-xs sm:text-sm text-slate-200 list-disc list-inside">
+            <!-- Injected via JS -->
+          </ul>
+        </div>
+
+        <!-- Bottom Modal CTAs -->
+        <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-xs text-slate-400 font-serif italic text-center sm:text-left">
+            Have questions about this technique? Talk directly with our Sialkot patternmaking desk.
+          </div>
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <button type="button" onclick="quoteFromBlogModal()" class="btn-electric-blue flex-1 sm:flex-none px-6 py-3 text-xs font-bold uppercase tracking-wider">
+              Request Factory Quote
+            </button>
+            <a id="blog-modal-whatsapp" href="https://wa.me/923010850746" target="_blank" class="btn-whatsapp-green flex-1 sm:flex-none px-6 py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
+              <span>Inquire on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 5. FREQUENTLY ASKED QUESTIONS (Interactive Expandable Accordion with 9 exact Q&As) -->
+  <section id="faq" class="py-24 bg-[#0b1120] relative border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 reveal-on-scroll">
+        <span class="text-xs uppercase tracking-widest font-bold text-sky-400">Direct Answers</span>
+        <h2 class="font-headline text-3xl sm:text-4xl font-black text-white uppercase">
+          Frequently Asked Questions
+        </h2>
+        <p class="font-serif italic text-sky-200 text-base">
+          Everything you need to know about manufacturing with <span class="brand-contrast">SAZ WEARZ</span> in Sialkot, Pakistan.
+        </p>
+      </div>
+
+      <!-- FAQ Accordion List (Strict Rule: DO NOT use bold styling on FAQ questions or body text. Regular-weight Lato with subtle spacing) -->
+      <div class="space-y-4">
+        
+        <!-- Q1 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">What is your minimum order quantity?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Our flexible MOQ starts at 30 pieces per style/colorway to support emerging brands.
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">Do you manufacture custom designs?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Yes, 100% bespoke cut & sew manufactured strictly to your tech packs, sketches, or physical reference samples.
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">Can you produce private-label clothing?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Yes. We provide complete custom branding: woven neck tags, satin care labels, debossed hangtags, and frosted polybags.
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">Can I order samples before bulk production?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Yes, pre-production sample approval is standard procedure before bulk runs.
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">What types of clothing do you manufacture?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Streetwear, gym wear, leather wear, activewear, sports wear, headwear, and custom gloves.
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">Do you provide custom labels and packaging?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Yes, full private-label packaging and custom trim accessories.
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">How long does production take?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Samples take 7&ndash;10 working days; bulk production typically takes 18&ndash;25 working days depending on order size.
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">Do you ship internationally?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Yes, door-to-door express DDP shipping worldwide via DHL, FedEx, and SkyNet.
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="navy-card faq-item border border-white/10 overflow-hidden">
+          <button class="faq-btn w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="faq-question text-base sm:text-lg text-white font-normal">How can I request a quotation?</span>
+            <svg class="faq-chevron w-5 h-5 text-sky-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-6 text-sm text-slate-300 leading-relaxed font-body font-normal border-t border-white/5 pt-4">
+            Fill out our online quote form or reach us directly on WhatsApp with your tech pack and quantities.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11. OFFICIAL QUOTATION REQUEST FORM -->
+  <section id="quote" class="py-24 bg-[#0f172a] relative overflow-hidden border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#0b1120] via-[#1e3a8a] to-[#0284c7] border border-sky-400/40 shadow-2xl shadow-blue-950/80 reveal-on-scroll">
+        
+        <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/80 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider">
+            &#9733; Direct Sialkot Factory Pricing &bull; Low MOQ: 30 Pcs
+          </div>
+          <h2 class="font-headline text-3xl sm:text-4xl font-black text-white uppercase">
+            Request an Official Quotation
+          </h2>
+          <p class="font-serif italic text-sky-100 text-sm">
+            Receive custom sample pricing, fabric specifications, and lead-time schedules within 24 hours.
+          </p>
+        </div>
+
+        <form id="quote-form" class="space-y-6">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="quote-name" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Full Name *</label>
+              <input 
+                type="text" 
+                id="quote-name" 
+                required 
+                placeholder="e.g. Marcus Vance" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
+              />
+            </div>
+            <div>
+              <label for="quote-brand" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Brand / Label Name *</label>
+              <input 
+                type="text" 
+                id="quote-brand" 
+                required 
+                placeholder="e.g. Apex Streetwear NYC" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="quote-email" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Work Email Address *</label>
+              <input 
+                type="email" 
+                id="quote-email" 
+                required 
+                placeholder="marcus@apexstreetwear.com" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
+              />
+            </div>
+            <div>
+              <label for="quote-phone" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">WhatsApp / Phone Number *</label>
+              <input 
+                type="tel" 
+                id="quote-phone" 
+                required 
+                placeholder="+1 (555) 234-5678" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="quote-category" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Garment Category *</label>
+              <select 
+                id="quote-category" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
+              >
+                <option value="Street Wear">Street Wear (Hoodies, Cargos, Tees, Jackets)</option>
+                <option value="Gym Wear">Gym Wear (Stringers, Compression, Shorts, Pump Covers)</option>
+                <option value="Leather Wear">Leather Wear (Biker Jackets, Pants, Vests, Boots)</option>
+                <option value="Sports Wear">Sports Wear (Jerseys, Tracksuits, Shorts, Polos)</option>
+                <option value="Active Wear">Active Wear (Leggings, Bras, Windbreakers)</option>
+                <option value="Headwear & Bespoke Gear">Custom Headwear, Gloves & Bespoke Gear</option>
+              </select>
+            </div>
+            <div>
+              <label for="quote-qty" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Estimated Quantity (Low MOQ: 30 Pcs) *</label>
+              <select 
+                id="quote-qty" 
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
+              >
+                <option value="30&ndash;99 pcs">30&ndash;99 pcs (Low MOQ Test Run)</option>
+                <option value="100&ndash;299 pcs">100&ndash;299 pcs (Standard Production)</option>
+                <option value="30&ndash;99 pcs">30&ndash;99 pcs (Scaling Label)</option>
+                <option value="1,000&ndash;4,999 pcs">1,000&ndash;4,999 pcs (High Volume)</option>
+                <option value="5,000+ pcs">5,000+ pcs (Enterprise Wholesale)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Drag & Drop Tech Pack Uploader -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Upload Tech Pack / Reference Sketches (Optional)</label>
+            <div 
+              id="drop-zone" 
+              class="border-2 border-dashed border-sky-400/40 rounded-2xl p-6 text-center cursor-pointer hover:border-sky-300 hover:bg-slate-900/40 transition-all bg-slate-900/60"
+            >
+              <input type="file" id="tech-pack-file" class="hidden" accept=".pdf,.png,.jpg,.jpeg,.ai,.psd" />
+              <div class="space-y-2">
+                <svg class="w-8 h-8 text-sky-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                <p class="text-sm font-bold text-white">Click or drag & drop tech pack / sketches</p>
+                <p class="text-xs text-sky-200">PDF, PNG, JPG, or AI files up to 25MB</p>
+              </div>
+              <div id="file-preview" class="hidden mt-3 text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 p-2 rounded-lg border border-emerald-500/30">
+                Uploaded: <span id="file-name"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Notes -->
+          <div>
+            <label for="quote-notes" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Project Notes & Fabric Specifications</label>
+            <textarea 
+              id="quote-notes" 
+              rows="3" 
+              placeholder="Tell us about desired GSM, custom colors, print/embroidery types, or target delivery date..." 
+              class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm"
+            ></textarea>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
+            <button 
+              type="submit" 
+              class="btn-electric-blue w-full sm:flex-1 py-4 text-center text-xs font-bold uppercase tracking-wider shadow-2xl flex items-center justify-center gap-2"
+            >
+              <span>Submit For Official Quote</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+            <button 
+              type="button" 
+              id="btn-whatsapp-quote" 
+              class="w-full sm:w-auto px-7 py-4 rounded-full btn-whatsapp-green font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.53 1.76.812 2.796.813h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.768-5.773-5.768zm3.364 8.163c-.14.394-.814.729-1.127.777-.314.048-.724.072-2.348-.601-1.378-.57-2.268-1.975-2.337-2.067-.068-.093-.56-.745-.56-1.42 0-.676.353-1.008.479-1.146.126-.139.274-.174.366-.174.093 0 .185.001.266.005.086.004.202-.033.315.24.116.279.394.965.428 1.036.035.07.058.152.012.244-.047.093-.07.151-.14.232-.07.081-.146.182-.209.244-.07.069-.143.144-.061.284.081.139.362.597.777.967.534.475.984.622 1.124.692.14.07.221.058.303-.035.081-.093.349-.406.442-.546.093-.139.186-.116.314-.07.128.047.814.384.954.454.14.07.233.104.267.162.035.059.035.343-.105.737z"/></svg>
+              <span>Direct WhatsApp Desk</span>
+            </button>
+          </div>
+
+          <div class="text-center text-xs text-sky-200 pt-2 font-mono">
+            Direct WhatsApp Production Desk: +92 301 0850746 &bull; 24/7 Factory Response
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUCCESS CONFIRMATION MODAL -->
+  <div id="quote-success-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="navy-card max-w-lg w-full p-8 border border-sky-400/40 relative space-y-6 text-center">
+      <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 mx-auto">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <div>
+        <h3 class="font-headline text-2xl font-bold text-white uppercase">Quotation Request Received</h3>
+        <p class="font-serif italic text-slate-300 text-sm mt-1">Our Sialkot production team has logged your specifications.</p>
+      </div>
+      <div id="modal-summary" class="p-4 rounded-xl bg-slate-900 border border-white/10"></div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button onclick="document.getElementById('quote-success-modal').classList.add('hidden')" class="btn-glass-outline flex-1 py-3 text-xs font-bold uppercase tracking-wider">
+          Close Window
+        </button>
+        <a href="https://wa.me/923010850746" target="_blank" class="btn-whatsapp-green flex-1 py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
+          <span>Chat on WhatsApp</span> &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. CLEAN MINIMAL FOOTER -->
+  <footer class="bg-[#070b14] border-t border-white/5 py-16 text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/5">
+        
+        <!-- Col 1: Standalone Logo Icon Only (Strictly NO text next to logo) -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center">
+            <img 
+              src="assets/images/saz-logo-icon.png" 
+              alt="Saz Wearz" 
+              class="header-logo-icon" 
+              style="max-height: 52px;" 
+            />
+          </div>
+          <p class="text-xs uppercase tracking-widest text-sky-400 font-bold">
+            Your Trusted Clothing Manufacturing Partner
+          </p>
+          <p class="text-slate-400 text-xs leading-relaxed max-w-sm font-body">
+            <span class="brand-contrast">SAZ WEARZ</span> Manufacturing Unit, Sialkot, Pakistan. End-to-end custom garment manufacturing for international labels with low minimums of 30 pieces per style.
+          </p>
+          <div class="pt-2">
+            <a 
+              href="https://www.instagram.com/sazwearz" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-2.5 px-3 py-2 rounded-xl bg-slate-900/90 border border-white/10 hover:border-pink-500/50 hover:bg-slate-800/80 transition-all duration-300 group shadow-md"
+              aria-label="Follow SAZ WEARZ on Instagram @sazwearz"
+            >
+              <!-- Instagram Gradient Icon Container -->
+              <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-sm group-hover:scale-110 transition-transform duration-300 shrink-0">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </div>
+
+              <!-- Instagram Handle Text -->
+              <span class="text-xs font-mono text-slate-300 group-hover:text-pink-400 transition-colors">
+                Instagram: <span class="text-white group-hover:text-pink-300 font-bold underline underline-offset-2 decoration-pink-500/50">@sazwearz</span>
+              </span>
+
+              <!-- Subtle Arrow Link Icon -->
+              <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-400 group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Factory Navigation</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#categories" class="hover:text-sky-400 transition-colors">Garment Categories</a></li>
+            <li><a href="#customizer" class="hover:text-sky-400 transition-colors">Studio Lab Prototyping</a></li>
+            <li><a href="#process" class="hover:text-sky-400 transition-colors">8-Step Manufacturing Process</a></li>
+            <li><a href="#why-us" class="hover:text-sky-400 transition-colors">Why Brands Choose Us</a></li>
+            <li><a href="#about" class="hover:text-sky-400 transition-colors">About Us &amp; Facility</a></li>
+            <li><a href="#global-proof" class="hover:text-sky-400 transition-colors">Global Proof &amp; Reviews</a></li>
+            <li><a href="#logistics" class="hover:text-sky-400 transition-colors">Worldwide Logistics</a></li>
+            <li><a href="#blog" class="hover:text-sky-400 transition-colors">Manufacturing Blog &amp; Insights</a></li>
+            <li><a href="#faq" class="hover:text-sky-400 transition-colors">FAQ &amp; MOQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Product Lines -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Product Lines</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#categories" class="hover:text-sky-400 transition-colors">Street Wear (Hoodies & Cargos)</a></li>
+            <li><a href="#categories" class="hover:text-sky-400 transition-colors">Gym Wear (Stringers & Tees)</a></li>
+            <li><a href="#categories" class="hover:text-sky-400 transition-colors">Leather Wear (Biker Jackets)</a></li>
+            <li><a href="#categories" class="hover:text-sky-400 transition-colors">Sports Wear (Team Kits)</a></li>
+            <li><a href="#categories" class="hover:text-sky-400 transition-colors">Active Wear (Seamless Sets)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Sialkot Operational Hub Details -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Operational Hub</h4>
+          <div class="space-y-2 text-xs text-slate-300">
+            <p class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-sky-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span><span class="brand-contrast">SAZ WEARZ</span> Manufacturing Unit, Sialkot, Pakistan</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="https://wa.me/923010850746" target="_blank" class="hover:text-sky-400 font-mono">+92 301 0850746</a>
+            </p>
+            <p class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:info@sazwearz.com" class="hover:text-sky-400 font-mono">info@sazwearz.com</a>
+            </p>
+            <p class="text-xs text-emerald-400 font-mono pt-1">
+              &bull; Working Hours: 24/7 International Production Desk
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div>
+          Copyright &copy; 2026 <span class="brand-contrast">SAZ WEARZ</span>. All Rights Reserved. OEM & ODM Custom Garment Manufacturing.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="#home" class="hover:text-slate-400">Back to Top &uarr;</a>
+          <span>&bull;</span> <a href="https://wa.me/923010850746" target="_blank" class="hover:text-sky-400 text-sky-400 font-bold">Direct WhatsApp Desk (+92 301 0850746)</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 11. STICKY FLOATING WHATSAPP BUTTON (Bottom Right) -->
+  <a 
+    href="https://wa.me/923010850746?text=Hi%20Saz%20Wearz%20Team%2C%20I%20would%20like%20to%20inquire%20about%20custom%20garment%20manufacturing%20at%20your%20Sialkot%20factory." 
+    target="_blank" 
+    class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-110 whatsapp-fab-pulse group shrink-0"
+    aria-label="Direct WhatsApp Production Desk"
+  >
+    <svg class="w-7 h-7 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.53 1.76.812 2.796.813h.005c3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.768-5.773-5.768zm3.364 8.163c-.14.394-.814.729-1.127.777-.314.048-.724.072-2.348-.601-1.378-.57-2.268-1.975-2.337-2.067-.068-.093-.56-.745-.56-1.42 0-.676.353-1.008.479-1.146.126-.139.274-.174.366-.174.093 0 .185.001.266.005.086.004.202-.033.315.24.116.279.394.965.428 1.036.035.07.058.152.012.244-.047.093-.07.151-.14.232-.07.081-.146.182-.209.244-.07.069-.143.144-.061.284.081.139.362.597.777.967.534.475.984.622 1.124.692.14.07.221.058.303-.035.081-.093.349-.406.442-.546.093-.139.186-.116.314-.07.128.047.814.384.954.454.14.07.233.104.267.162.035.059.035.343-.105.737z"/></svg>
+  </a>
+
+  <!-- Main JavaScript Controller -->
+  <script src="app.js"></script>
+</body>
+</html>
