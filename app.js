@@ -1,5 +1,22 @@
 // SAZ WEARZ (@sazwearz) - Modern B2B Clothing Manufacturing Controller
 
+// Universal Image Fallback Handler (resolves root / vs assets/images/ seamlessly across Vercel & local)
+window.addEventListener('error', function(e) {
+  if (e.target && e.target.tagName === 'IMG') {
+    const img = e.target;
+    if (img.dataset.fallbackApplied) return;
+    img.dataset.fallbackApplied = 'true';
+    const currentSrc = img.getAttribute('src');
+    if (!currentSrc || currentSrc.startsWith('data:') || currentSrc.startsWith('http')) return;
+    
+    if (currentSrc.startsWith('assets/images/')) {
+      img.src = currentSrc.replace('assets/images/', '');
+    } else {
+      img.src = 'assets/images/' + currentSrc;
+    }
+  }
+}, true);
+
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initCategoryExplorer();
@@ -71,8 +88,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Chenille Lettering, 3D Puff Embroidery, Flat Tatami',
         overview: 'Oversized boxy streetwear silhouette, structured double-layer hood without drawstrings (or with custom dipped metal-tip drawstrings), deep kangaroo pocket, and heavy 2x2 ribbed cuffs and hem.',
         desc: 'Oversized boxy fit, structured double-layer hood, drop shoulders, heavy 2x2 ribbing, custom 3D puff prints (Front & Back Views).',
-        image: 'assets/images/hoodie-heavyweight-front.jpg',
-        backImage: 'assets/images/hoodie-heavyweight-back.jpg'
+        image: 'hoodie-heavyweight-front.jpg',
+        backImage: 'hoodie-heavyweight-back.jpg'
       },
       {
         name: 'Graphic Tees',
@@ -83,8 +100,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Tonal Micro Chest Embroidery, Hem Clip Labels',
         overview: 'Vintage acid/mineral washed streetwear boxy tees with thick non-sagging ribbed collar and drop-shoulder profile.',
         desc: 'Vintage acid/mineral washed boxy tees, thick 1.25" rib collar, soft-hand zero-feel discharge screen prints (Front & Back Views).',
-        image: 'assets/images/graphic-tee-vintage-front.jpg',
-        backImage: 'assets/images/graphic-tee-vintage-back.jpg'
+        image: 'graphic-tee-vintage-front.jpg',
+        backImage: 'graphic-tee-vintage-back.jpg'
       },
       {
         name: 'Cargo Pants',
@@ -95,8 +112,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Velcro Morale Patches, Direct Embroidery',
         overview: '6 functional 3D bellows utility pockets, articulated knee darting, adjustable ankle bungee toggles, and reinforced saddle seat.',
         desc: '6 functional 3D bellows pockets, articulated knee darting, adjustable ankle bungee toggles, reinforced saddle seat (Front & Back Views).',
-        image: 'assets/images/cargo-pants-tactical-front.jpg',
-        backImage: 'assets/images/cargo-pants-tactical-back.jpg'
+        image: 'cargo-pants-tactical-front.jpg',
+        backImage: 'cargo-pants-tactical-back.jpg'
       },
       {
         name: 'Bomber & Denim Jackets',
@@ -107,8 +124,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Large Back Chenille, Felt Appliqué, Woven Badges',
         overview: 'Classic vintage trucker cut with embossed metal shank buttons and waist tabs, alongside lined flight bombers with custom branded snap hardware.',
         desc: 'Classic vintage trucker cut with embossed metal shank buttons and waist tabs, alongside lined flight bombers with custom branded snap hardware (Front & Back Views).',
-        image: 'assets/images/denim-jacket-vintage-front.jpg',
-        backImage: 'assets/images/denim-jacket-vintage-back.jpg'
+        image: 'denim-jacket-vintage-front.jpg',
+        backImage: 'denim-jacket-vintage-back.jpg'
       },
       {
         name: 'Joggers',
@@ -119,8 +136,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Direct Embroidery, Woven Hem Tags',
         overview: 'Deep slant pockets, heavy ribbed waistband with dipped metal-tip drawstrings, rear patch pocket, and elasticated ankle cuffs.',
         desc: 'Deep slant pockets, heavy ribbed waistband with dipped metal-tip drawstrings, rear patch pocket, and elasticated ankle cuffs (Front & Back Views).',
-        image: 'assets/images/joggers-heavyweight-front.png',
-        backImage: 'assets/images/joggers-heavyweight-back.png'
+        image: 'joggers-heavyweight-front.png',
+        backImage: 'joggers-heavyweight-back.png'
       },
       {
         name: 'Puffer Jackets',
@@ -131,8 +148,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Silicone Rubber Badges, Embroidered Chest Logo',
         overview: 'Boxy streetwear winter puffer with waterproof micro-ripstop shell, horizontal down baffle channels, storm cuffs, toggle-cinch hood, and heavy two-way zipper.',
         desc: 'Boxy streetwear winter puffer with waterproof micro-ripstop shell, horizontal down baffle channels, storm cuffs, toggle-cinch hood, and heavy two-way zipper (Front & Back Views).',
-        image: 'assets/images/puffer-jacket-black-front.png',
-        backImage: 'assets/images/puffer-jacket-black-back.png'
+        image: 'puffer-jacket-black-front.png',
+        backImage: 'puffer-jacket-black-back.png'
       },
       {
         name: 'Tracksuits',
@@ -143,8 +160,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Embroidered Chest Crests, Merrowed Patches',
         overview: 'Two-piece retro athletic track set with contrast piping tape, funnel neck zip jacket with chest badge, and pin-tucked track bottoms with zippered ankle hems.',
         desc: 'Two-piece retro athletic track set with contrast piping tape, funnel neck zip jacket with chest badge, and pin-tucked track bottoms with zippered ankle hems (Front & Back Views).',
-        image: 'assets/images/tracksuit-retro-red-front.png',
-        backImage: 'assets/images/tracksuit-retro-red-back.png'
+        image: 'tracksuit-retro-red-front.png',
+        backImage: 'tracksuit-retro-red-back.png'
       }
     ]
   },
@@ -161,8 +178,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Woven Lower Hem Label, Tonal Neck Stamp',
         overview: 'Deep athletic scoop neck, raw-edge armhole cutouts, Y-back racerback contour, drop-tail curved hem, and woven hem label.',
         desc: 'Deep athletic scoop neck, raw-edge armhole cutouts, Y-back racerback contour, drop-tail curved hem, and woven hem label (Front & Back Views).',
-        image: 'assets/images/tank-top-stringer-front.png',
-        backImage: 'assets/images/tank-top-stringer-back.png'
+        image: 'tank-top-stringer-front.png',
+        backImage: 'tank-top-stringer-back.png'
       },
       {
         name: 'Compression Tees',
@@ -173,8 +190,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Heat-Sealed Silicone Badges',
         overview: 'Ergonomic muscle-fit compression with flatlock 4-needle anti-chafe seams, underarm mesh ventilation zones, and raglan sleeve construction.',
         desc: 'Ergonomic muscle-fit compression with flatlock 4-needle anti-chafe seams, underarm mesh ventilation zones, and raglan sleeve construction (Front & Back Views).',
-        image: 'assets/images/compression-tee-front.png',
-        backImage: 'assets/images/compression-tee-back.png'
+        image: 'compression-tee-front.png',
+        backImage: 'compression-tee-back.png'
       },
       {
         name: 'Gym Shorts',
@@ -185,8 +202,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Subtle Woven Tab, Silicone Grip Print',
         overview: '5" & 7" inseam training shorts with concealed waterproof zipper pockets, rear stash pocket, dedicated towel/shirt carry loop, and side split mobility hems.',
         desc: '5" & 7" inseam training shorts with concealed waterproof zipper pockets, rear stash pocket, dedicated towel/shirt carry loop, and side split mobility hems (Front & Back Views).',
-        image: 'assets/images/gym-shorts-front.png',
-        backImage: 'assets/images/gym-shorts-back.png'
+        image: 'gym-shorts-front.png',
+        backImage: 'gym-shorts-back.png'
       },
       {
         name: 'Joggers & Tights',
@@ -197,8 +214,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Direct Micro Embroidery, Rubberized Badges',
         overview: 'Tapered athletic training joggers with articulated knee darts, ergonomic crotch gusset, waterproof zip pockets, and gusseted ankle zippers.',
         desc: 'Tapered athletic training joggers with articulated knee darts, ergonomic crotch gusset, waterproof zip pockets, and gusseted ankle zippers (Front & Back Views).',
-        image: 'assets/images/gym-joggers-tights-front.png',
-        backImage: 'assets/images/gym-joggers-tights-back.png'
+        image: 'gym-joggers-tights-front.png',
+        backImage: 'gym-joggers-tights-back.png'
       },
       {
         name: 'Oversized Pump Covers',
@@ -209,8 +226,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Distressed Raw Appliqué, Woven Neck Tape',
         overview: 'Heavy-drop oversized boxy training tee with 1.25" thick ribbed collar, drop shoulders, vintage mineral wash, and distressed graphic print.',
         desc: 'Heavy-drop oversized boxy training tee with 1.25" thick ribbed collar, drop shoulders, vintage mineral wash, and distressed graphic print (Front & Back Views).',
-        image: 'assets/images/pump-cover-tee-front.png',
-        backImage: 'assets/images/pump-cover-tee-back.png'
+        image: 'pump-cover-tee-front.png',
+        backImage: 'pump-cover-tee-back.png'
       }
     ]
   },
@@ -227,8 +244,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Direct Leather Embroidery, Quilted Leather Patches',
         overview: 'Handcrafted cafe racer jacket with channel-quilted shoulders and elbows, 4 zippered pockets, antique brass YKK hardware, and adjustable waist buckle tabs.',
         desc: 'Handcrafted cafe racer jacket with channel-quilted shoulders and elbows, 4 zippered pockets, antique brass YKK hardware, and adjustable waist buckle tabs (Front & Back Views).',
-        image: 'assets/images/biker-racer-jacket-front.png',
-        backImage: 'assets/images/biker-racer-jacket-back.png'
+        image: 'biker-racer-jacket-front.png',
+        backImage: 'biker-racer-jacket-back.png'
       },
       {
         name: 'Leather Pants',
@@ -239,8 +256,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Tonal Leather Appliqué',
         overview: 'Tailored straight-leg leather trousers with horizontal knee seams, slanted front pockets, rear spade pockets, and satin interior lining.',
         desc: 'Tailored straight-leg leather trousers with horizontal knee seams, slanted front pockets, rear spade pockets, and satin interior lining (Front & Back Views).',
-        image: 'assets/images/leather-pants-skirts-front.png',
-        backImage: 'assets/images/leather-pants-skirts-back.png'
+        image: 'leather-pants-skirts-front.png',
+        backImage: 'leather-pants-skirts-back.png'
       },
       {
         name: 'Leather Corsets',
@@ -251,8 +268,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Embroidered Eyelet Backing, Ornate Leather Trim',
         overview: 'Handcrafted overbust leather corset in supple nappa leather with sweet-heart bust cups, 6 antique brass front busk clasps, 14-eyelet rear tight-lacing panel, and modesty flap.',
         desc: 'Handcrafted overbust leather corset in supple nappa leather with sweet-heart bust cups, 6 antique brass front busk clasps, 14-eyelet rear tight-lacing panel, and modesty flap (Front & Back Views).',
-        image: 'assets/images/leather-corset-steel-front.png',
-        backImage: 'assets/images/leather-corset-steel-back.png'
+        image: 'leather-corset-steel-front.png',
+        backImage: 'leather-corset-steel-back.png'
       },
       {
         name: 'Leather Skirts & Shorts',
@@ -263,8 +280,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Top-Stitched Leather Panels',
         overview: 'High-waisted A-line leather midi and mini skirts with walking kick vents and exposed YKK metal zips, alongside tailored leather shorts.',
         desc: 'High-waisted A-line leather midi and mini skirts with walking kick vents and exposed YKK metal zips, alongside tailored leather shorts (Front & Back Views).',
-        image: 'assets/images/leather-pants-skirts-front.png',
-        backImage: 'assets/images/leather-pants-skirts-back.png'
+        image: 'leather-pants-skirts-front.png',
+        backImage: 'leather-pants-skirts-back.png'
       },
       {
         name: 'Leather Vests',
@@ -275,8 +292,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Seamless Single-Piece Back for Rocker & Club Patches',
         overview: 'Club cut motorcycle vest with seamless single-piece back panel for rocker patches, hidden YKK zipper with snap flap, concealed carry pocket, and side lace adjusters.',
         desc: 'Club cut motorcycle vest with seamless single-piece back panel for rocker patches, hidden YKK zipper with snap flap, concealed carry pocket, and side lace adjusters (Front & Back Views).',
-        image: 'assets/images/leather-vest-club-front.png',
-        backImage: 'assets/images/leather-vest-club-back.png'
+        image: 'leather-vest-club-front.png',
+        backImage: 'leather-vest-club-back.png'
       },
       {
         name: 'Leather Boots',
@@ -287,8 +304,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Heritage Pull Tab Stitching',
         overview: 'Heritage cap-toe service boots handcrafted from oiled pull-up cowhide with 360° storm welt, commando lug soles, brass speed hooks, and calfskin lining.',
         desc: 'Heritage cap-toe service boots handcrafted from oiled pull-up cowhide with 360° storm welt, commando lug soles, brass speed hooks, and calfskin lining (Side Profile & Rear Views).',
-        image: 'assets/images/leather-boots-heritage-front.png',
-        backImage: 'assets/images/leather-boots-heritage-back.png'
+        image: 'leather-boots-heritage-front.png',
+        backImage: 'leather-boots-heritage-back.png'
       },
       {
         name: 'Leather Accessories',
@@ -299,8 +316,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Monogrammed Leather Patches',
         overview: 'Handcrafted leather goods ensemble including oiled pull-up cowhide weekender duffle bag, double-stitched roller buckle belt, and carbon-knuckle riding gloves.',
         desc: 'Handcrafted leather goods ensemble including oiled pull-up cowhide weekender duffle bag, double-stitched roller buckle belt, and carbon-knuckle riding gloves (Front Zip & Rear Buckle Views).',
-        image: 'assets/images/leather-accessories-set-front.png',
-        backImage: 'assets/images/leather-accessories-set-back.png'
+        image: 'leather-accessories-set-front.png',
+        backImage: 'leather-accessories-set-back.png'
       }
     ]
   },
@@ -317,8 +334,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Woven Team Crests, Silicone Heat-Applied Badges',
         overview: 'Custom soccer, cricket, and basketball uniforms with moisture-wicking interlock, honeycomb mesh ventilation, and fade-proof digital dye infusion.',
         desc: 'Custom soccer, cricket, and basketball uniforms with moisture-wicking interlock, honeycomb mesh ventilation, and fade-proof digital dye infusion (Front & Back Views).',
-        image: 'assets/images/sports-team-kits-front.png',
-        backImage: 'assets/images/sports-team-kits-back.png'
+        image: 'sports-team-kits-front.png',
+        backImage: 'sports-team-kits-back.png'
       },
       {
         name: 'Tracksuits',
@@ -329,8 +346,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Direct Chest Embroidery, Embroidered Badge',
         overview: 'Two-piece retro athletic track set with contrast piping tape, funnel neck zip jacket with chest badge, and pin-tucked track bottoms with zippered ankle hems.',
         desc: 'Two-piece retro athletic track set with contrast piping tape, funnel neck zip jacket with chest badge, and pin-tucked track bottoms with zippered ankle hems (Front & Back Views).',
-        image: 'assets/images/tracksuit-retro-red-front.png',
-        backImage: 'assets/images/tracksuit-retro-red-back.png'
+        image: 'tracksuit-retro-red-front.png',
+        backImage: 'tracksuit-retro-red-back.png'
       },
       {
         name: 'Polo Shirts',
@@ -341,8 +358,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'High-Definition Chest Embroidery',
         overview: 'Performance athletic polo with 3-button placket, underarm cooling mesh, back shoulder yoke, UV-shield finish, and tennis-tail side split hem.',
         desc: 'Performance athletic polo with 3-button placket, underarm cooling mesh, back shoulder yoke, UV-shield finish, and tennis-tail side split hem (Front & Back Views).',
-        image: 'assets/images/polo-shirt-athletic-front.png',
-        backImage: 'assets/images/polo-shirt-athletic-back.png'
+        image: 'polo-shirt-athletic-front.png',
+        backImage: 'polo-shirt-athletic-back.png'
       },
       {
         name: 'Sports Shorts',
@@ -353,8 +370,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Direct Lower Leg Embroidery',
         overview: 'Ultra-light athletic shorts with charcoal flank mesh ventilation, inner thigh mobility gusset, concealed zip pockets, and rear zip stash pocket.',
         desc: 'Ultra-light athletic shorts with charcoal flank mesh ventilation, inner thigh mobility gusset, concealed zip pockets, and rear zip stash pocket (Front & Back Views).',
-        image: 'assets/images/sports-shorts-athletic-front.png',
-        backImage: 'assets/images/sports-shorts-athletic-back.png'
+        image: 'sports-shorts-athletic-front.png',
+        backImage: 'sports-shorts-athletic-back.png'
       },
       {
         name: 'Windbreakers',
@@ -365,8 +382,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Rubberized Badges, Embroidered Storm Flap',
         overview: 'Technical two-tone running windbreaker with 3-point bungee scuba hood, rear cape ventilation flap, charcoal mesh lining, and 3 zipper pockets.',
         desc: 'Technical two-tone running windbreaker with 3-point bungee scuba hood, rear cape ventilation flap, charcoal mesh lining, and 3 zipper pockets (Front & Back Views).',
-        image: 'assets/images/windbreaker-technical-front.png',
-        backImage: 'assets/images/windbreaker-technical-back.png'
+        image: 'windbreaker-technical-front.png',
+        backImage: 'windbreaker-technical-back.png'
       },
       {
         name: 'Performance Socks & Headbands',
@@ -377,8 +394,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Woven Jacquard Knit Patterns, Embroidered Terry Bands',
         overview: 'Anti-slip silicone grip athletic socks with arch compression, high-pile embroidered cotton terry wristbands, and stretch headbands.',
         desc: 'Anti-slip silicone grip athletic socks with arch compression, high-pile embroidered cotton terry wristbands, and stretch headbands (Grip Sole & Instep Mesh Views).',
-        image: 'assets/images/sports-socks-headbands-front.png',
-        backImage: 'assets/images/sports-socks-headbands-back.png'
+        image: 'sports-socks-headbands-front.png',
+        backImage: 'sports-socks-headbands-back.png'
       }
     ]
   },
@@ -395,8 +412,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Woven Waistband Labels, Silicone Heat Seal',
         overview: 'Compressive double-ribbed high waistband, ruched butt-scrunch sculpting contour, outer leg rib panels, and 100% squat-proof non-sheer knit.',
         desc: 'Compressive double-ribbed high waistband, ruched butt-scrunch sculpting contour, outer leg rib panels, and 100% squat-proof non-sheer knit (Front & Back Views).',
-        image: 'assets/images/leggings-seamless-terracotta-front.jpg',
-        backImage: 'assets/images/leggings-seamless-terracotta-back.jpg'
+        image: 'leggings-seamless-terracotta-front.jpg',
+        backImage: 'leggings-seamless-terracotta-back.jpg'
       },
       {
         name: 'Sports Bras',
@@ -407,8 +424,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Heat-Sealed Silicone Logos',
         overview: 'High-support racerback and criss-cross athletic bras with charcoal air-mesh ventilation panels, removable molded cups, and compressive anti-roll underbust band.',
         desc: 'High-support racerback and criss-cross athletic bras with charcoal air-mesh ventilation panels, removable molded cups, and compressive anti-roll underbust band (Front & Back Views).',
-        image: 'assets/images/sports-bra-active-front.jpg',
-        backImage: 'assets/images/sports-bra-active-back.jpg'
+        image: 'sports-bra-active-front.jpg',
+        backImage: 'sports-bra-active-back.jpg'
       },
       {
         name: 'Performance Tops',
@@ -419,8 +436,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Tonal Micro Embroidery, Hem Clip',
         overview: 'Long-sleeve cropped athletic top with micro-perforated chest ventilation, contrast raglan piping, ribbed compression cuffs with thumbholes, and supportive underbust band.',
         desc: 'Long-sleeve cropped athletic top with micro-perforated chest ventilation, contrast raglan piping, ribbed compression cuffs with thumbholes, and supportive underbust band (Front & Detail Views).',
-        image: 'assets/images/performance-top-active-front.jpg',
-        backImage: 'assets/images/performance-top-active-back.jpg'
+        image: 'performance-top-active-front.jpg',
+        backImage: 'performance-top-active-back.jpg'
       },
       {
         name: 'Windbreakers',
@@ -431,8 +448,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Rubberized Badges, Embroidered Storm Flap',
         overview: 'Technical two-tone running windbreaker with 3-point bungee scuba hood, rear cape ventilation flap, charcoal mesh lining, and 3 zipper pockets.',
         desc: 'Technical two-tone running windbreaker with 3-point bungee scuba hood, rear cape ventilation flap, charcoal mesh lining, and 3 zipper pockets (Front & Back Views).',
-        image: 'assets/images/windbreaker-technical-front.png',
-        backImage: 'assets/images/windbreaker-technical-back.png'
+        image: 'windbreaker-technical-front.png',
+        backImage: 'windbreaker-technical-back.png'
       },
       {
         name: 'Running Shorts & Skorts',
@@ -443,8 +460,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Woven Waistband Patch',
         overview: 'High-split running shorts and wrap tennis skorts with built-in charcoal compression spandex liner, phone drop-in pocket, rear waistband zipper stash, and key loop.',
         desc: 'High-split running shorts and wrap tennis skorts with built-in charcoal compression spandex liner, phone drop-in pocket, rear waistband zipper stash, and key loop (Front & Back Views).',
-        image: 'assets/images/running-shorts-skorts-active-front.jpg',
-        backImage: 'assets/images/running-shorts-skorts-active-back.jpg'
+        image: 'running-shorts-skorts-active-front.jpg',
+        backImage: 'running-shorts-skorts-active-back.jpg'
       }
     ]
   },
@@ -461,8 +478,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'High-Density 3D Puff Embroidery, Flat Side Embroidery',
         overview: 'Structured 6-panel flat-brim snapbacks with high-density 3D puff embroidery, vintage washed curved dad hats with brass buckle, and 5-panel campers with nylon clip straps.',
         desc: 'Structured 6-panel flat-brim snapbacks with high-density 3D puff embroidery, vintage washed curved dad hats with brass buckle, and 5-panel campers with nylon clip straps (Front & Profile Views).',
-        image: 'assets/images/headwear-snapbacks-front.png',
-        backImage: 'assets/images/headwear-snapbacks-back.png'
+        image: 'headwear-snapbacks-front.png',
+        backImage: 'headwear-snapbacks-back.png'
       },
       {
         name: 'Trucker Hats',
@@ -473,8 +490,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Merrowed Edge Woven Patches, Embroidered Borders',
         overview: 'Classic 5-panel foam-front trucker caps with breathable poly mesh rear, custom merrowed woven patches, 6-row stitched curved visors, and 7-snap closures.',
         desc: 'Classic 5-panel foam-front trucker caps with breathable poly mesh rear, custom merrowed woven patches, 6-row stitched curved visors, and 7-snap closures (Colorways & Patch Detail Views).',
-        image: 'assets/images/headwear-trucker-front.png',
-        backImage: 'assets/images/headwear-trucker-back.png'
+        image: 'headwear-trucker-front.png',
+        backImage: 'headwear-trucker-back.png'
       },
       {
         name: 'Tactical Beanies',
@@ -485,8 +502,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Direct Flat & 3D Embroidery, Merrowed Clip Labels, Leather Badges',
         overview: 'Heavyweight acrylic & merino wool rib-knit beanies with 4-dart anatomical crown shaping, 3-inch fold-over cuff, and custom woven clip labels.',
         desc: 'Heavyweight acrylic & merino wool rib-knit beanies with 4-dart anatomical crown shaping, 3-inch fold-over cuff, and custom woven clip labels (Front Colorways & Rib Detail Views).',
-        image: 'assets/images/headwear-beanies-front.png',
-        backImage: 'assets/images/headwear-beanies-back.png'
+        image: 'headwear-beanies-front.png',
+        backImage: 'headwear-beanies-back.png'
       },
       {
         name: 'Gym Gloves',
@@ -497,8 +514,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Rubberized TPR Molded Wrist Straps, Woven Badges',
         overview: 'Fingerless tactical gym & lifting gloves with shock-absorbing gel-padded Clarino® palms, chevron silicone grip, 3D airflow mesh, quick-pull finger loops, and integrated 2-inch neoprene wrist wraps.',
         desc: 'Fingerless tactical gym & lifting gloves with shock-absorbing gel-padded Clarino® palms, chevron silicone grip, 3D airflow mesh, quick-pull finger loops, and integrated 2-inch neoprene wrist wraps (Fastened Profile & Extended Wrap Views).',
-        image: 'assets/images/gym-gloves-front.png',
-        backImage: 'assets/images/gym-gloves-back.png'
+        image: 'gym-gloves-front.png',
+        backImage: 'gym-gloves-back.png'
       },
       {
         name: 'Leather Biker Gloves',
@@ -509,8 +526,8 @@ const CATEGORY_DATA = {
         embroideryStyles: 'Debossed Leather Pull Tabs, Molded Carbon Knuckle Shields',
         overview: 'Handcrafted full-grain goat & cowhide leather riding gloves with molded real carbon fiber knuckle guards, reinforced dual-layer palms, touchscreen fingertips, and accordion flex stretch ribs.',
         desc: 'Handcrafted full-grain goat & cowhide leather riding gloves with molded real carbon fiber knuckle guards, reinforced dual-layer palms, touchscreen fingertips, and accordion flex stretch ribs (Overhead Profile & 3/4 Isometric Views).',
-        image: 'assets/images/leather-biker-gloves-front.png',
-        backImage: 'assets/images/leather-biker-gloves-back.png'
+        image: 'leather-biker-gloves-front.png',
+        backImage: 'leather-biker-gloves-back.png'
       }
     ]
   }
@@ -1933,7 +1950,7 @@ const BLOG_POSTS = {
     category: 'Sourcing & Industry Report',
     tag: '2026 Sourcing Guide • Rank #1',
     readTime: '8 Min Read',
-    image: 'assets/images/best-hoodie-manufacturers-sialkot.jpg',
+    image: 'best-hoodie-manufacturers-sialkot.jpg',
     content: `
       <div class="blog-prose space-y-5">
         <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-serif italic border-l-4 border-sky-400 pl-4 py-1">
@@ -2190,7 +2207,7 @@ const BLOG_POSTS = {
     category: 'Fabric Engineering',
     tag: 'Fabric Engineering',
     readTime: '5 Min Read',
-    image: 'assets/images/streetwear-collection.jpg',
+    image: 'streetwear-collection.jpg',
     content: `
       <p>In high-end streetwear manufacturing, fabric weight alone does not guarantee a luxury hand-feel or structured silhouette. The fundamental difference between budget heavyweight fleece and authentic luxury French Terry lies in yarn selection, loopback density, and finishing tension.</p>
       
@@ -2215,7 +2232,7 @@ const BLOG_POSTS = {
     category: 'Embellishment Tech',
     tag: 'Embellishment Tech',
     readTime: '6 Min Read',
-    image: 'assets/images/embroidery-craft.jpg',
+    image: 'embroidery-craft.jpg',
     content: `
       <p>Choosing the correct tactile embellishment is one of the highest-impact design decisions for modern apparel labels. Each technique interacts uniquely with fabric GSM, weave stretch, and washing durability.</p>
       
@@ -2240,7 +2257,7 @@ const BLOG_POSTS = {
     category: 'Global Logistics',
     tag: 'Global Logistics',
     readTime: '4 Min Read',
-    image: 'assets/images/packaging-branding.jpg',
+    image: 'packaging-branding.jpg',
     content: `
       <p>One of the most intimidating hurdles for emerging clothing brands is navigating international customs clearance, HS tariff codes, and unpredictable import brokerage charges. Understanding the difference between FOB, CIF, and DDP shipping is essential for protecting profit margins.</p>
       
