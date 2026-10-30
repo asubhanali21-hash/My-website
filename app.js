@@ -19,6 +19,7 @@ window.addEventListener('error', function(e) {
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
+  initHeroCarousel();
   initCategoryExplorer();
   initProductDetailModal();
   initProductCustomizer();
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFileUpload();
   initScrollSpy();
   initScrollReveal();
+  initProcessPipeline();
 });
 
 // 1. Mobile Menu Drawer
@@ -73,6 +75,166 @@ function initScrollReveal() {
   revealElements.forEach(el => observer.observe(el));
 }
 
+// StitchExpo-Style Dynamic Animated Hero Showcase Carousel (5s auto-play, Ken Burns, pagination, hover pause)
+function initHeroCarousel() {
+  const container = document.getElementById('hero-showcase');
+  if (!container) return;
+
+  const slides = container.querySelectorAll('.hero-slide');
+  const pageBtns = container.querySelectorAll('.hero-page-btn');
+  const prevBtn = document.getElementById('hero-prev-btn');
+  const nextBtn = document.getElementById('hero-next-btn');
+  const progressFill = document.getElementById('hero-progress-fill');
+
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  let progressInterval = null;
+  let progress = 0; // percentage: 0 to 100
+  let isPaused = false;
+  const SLIDE_DURATION = 5000; // 5 seconds
+  const TICK_INTERVAL = 50; // 50ms smooth tick
+
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+
+    slides.forEach((slide, i) => {
+      if (i === currentIndex) {
+        slide.classList.add('active');
+        const bg = slide.querySelector('.hero-slide-bg');
+        if (bg) {
+          bg.style.animation = 'none';
+          bg.offsetHeight; // trigger reflow
+          bg.style.animation = 'kenBurnsZoomEffect 8s ease-out forwards';
+        }
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    pageBtns.forEach((btn, i) => {
+      if (i === currentIndex) {
+        btn.classList.add('active-page');
+      } else {
+        btn.classList.remove('active-page');
+      }
+    });
+
+    // Reset progress on slide transition
+    progress = 0;
+    if (progressFill) {
+      progressFill.style.width = '0%';
+    }
+  }
+
+  function startTimer() {
+    stopTimer();
+    progressInterval = setInterval(() => {
+      if (!isPaused) {
+        progress += (TICK_INTERVAL / SLIDE_DURATION) * 100;
+        if (progressFill) {
+          progressFill.style.width = Math.min(progress, 100) + '%';
+        }
+        if (progress >= 100) {
+          showSlide(currentIndex + 1);
+        }
+      }
+    }, TICK_INTERVAL);
+  }
+
+  function stopTimer() {
+    if (progressInterval) {
+      clearInterval(progressInterval);
+      progressInterval = null;
+    }
+  }
+
+  // Previous & Next navigation buttons
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showSlide(currentIndex - 1);
+      startTimer();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showSlide(currentIndex + 1);
+      startTimer();
+    });
+  }
+
+  // Numbered pagination clicks [01 | 02 | 03 | 04]
+  pageBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetIdx = parseInt(btn.getAttribute('data-slide-index'), 10);
+      if (!isNaN(targetIdx)) {
+        showSlide(targetIdx);
+        startTimer();
+      }
+    });
+  });
+
+  // Pause on hover
+  container.addEventListener('mouseenter', () => {
+    isPaused = true;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isPaused = false;
+  });
+
+  // Keyboard navigation
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      showSlide(currentIndex - 1);
+      startTimer();
+    } else if (e.key === 'ArrowRight') {
+      showSlide(currentIndex + 1);
+      startTimer();
+    }
+  });
+
+  // Mobile swipe gestures
+  let touchStartX = 0;
+  let touchEndX = 0;
+  container.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  container.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) {
+      showSlide(currentIndex + 1);
+      startTimer();
+    } else if (touchEndX - touchStartX > 50) {
+      showSlide(currentIndex - 1);
+      startTimer();
+    }
+  }, { passive: true });
+
+  // Start with Slide 0 active
+  showSlide(0);
+  startTimer();
+}
+
+// Global category switcher helper for Hero CTA buttons
+window.switchCategory = function(catKey) {
+  const tabBtn = document.querySelector(`.category-tab-btn[data-cat="${catKey}"]`);
+  if (tabBtn) {
+    tabBtn.click();
+  }
+  const catSection = document.getElementById('categories');
+  if (catSection) {
+    catSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 // 3. Category & Sub-Category Explorer (NO PUBLIC PRICES)
 const CATEGORY_DATA = {
   'street-wear': {
@@ -114,6 +276,18 @@ const CATEGORY_DATA = {
         desc: '6 functional 3D bellows pockets, articulated knee darting, adjustable ankle bungee toggles, reinforced saddle seat (Front & Back Views).',
         image: 'cargo-pants-tactical-front.jpg',
         backImage: 'cargo-pants-tactical-back.jpg'
+      },
+      {
+        name: 'Denim Jeans',
+        tag: '14 oz Washed Selvedge',
+        gsm: '13.5–14.5 oz 100% Heavy Ring-Spun Cotton Denim',
+        stitching: 'Reinforced Gold Chainstitch Inseams, Copper Riveted Pockets',
+        printStyles: 'Vintage Stone & Enzyme Wash, Whiskering, Distress Grinding',
+        embroideryStyles: 'Back-Pocket Arcuate Embroidery, Debossed Leather Jacron Patch',
+        overview: 'Heavyweight bespoke streetwear denim jeans tailored in relaxed baggy and straight-leg fits. Built with heavy-duty YKK zipper fly, embossed branded metal shank buttons, reinforced copper pocket rivets, custom rear-pocket decorative arcuate embroidery, and debossed genuine leather jacron patch on the rear waistband.',
+        desc: 'Relaxed baggy streetwear fit, vintage stone wash, reinforced copper rivets, custom back-pocket embroidery & debossed leather waistband patch (Front & Back Views).',
+        image: 'denim-jeans-streetwear-front.jpg',
+        backImage: 'denim-jeans-streetwear-back.jpg'
       },
       {
         name: 'Bomber & Denim Jackets',
@@ -864,7 +1038,7 @@ window.requestQuoteFromModal = function() {
     'leather-wear': 'Leather Wear',
     'sports-wear': 'Sports Wear',
     'active-wear': 'Active Wear',
-    'headwear-gear': 'Headwear & Bespoke Gear'
+    'headwear-gear': 'Headwear & Gear'
   };
 
   const quoteCategory = document.getElementById('quote-category');
@@ -1649,6 +1823,7 @@ function initProductCustomizer() {
   if (customizerEmailBtn) {
     customizerEmailBtn.addEventListener('click', () => {
       const quoteNotes = document.getElementById('quote-notes');
+      const quoteCategory = document.getElementById('quote-category');
       const quoteSec = document.getElementById('quote');
 
       const sizeBreakdown = Object.entries(customizerState.sizes)
@@ -1664,72 +1839,668 @@ function initProductCustomizer() {
           `• Placement: ${customizerState.logoPlacement}\n` +
           `• Decoration: ${customizerState.finishName}\n` +
           `• Scale / Rotation: ${customizerState.scale}% | ${customizerState.rotation}°\n` +
-          `• Sizing Breakdown: ${sizeBreakdown}\n` +
-          `• Total Quantity: ${customizerState.totalQty} Pieces (Universal Low MOQ: 30 Pcs)`;
+          `• Sizing Breakdown: ${sizeBreakdown || 'Assorted XS-3XL'}\n` +
+          `• Total Quantity: ${customizerState.totalQty} Pieces (Universal Low MOQ: 30 Pcs)\n` +
+          `• Official Business Routing: info@sazwearz.com`;
+      }
+
+      // Automatically sync matching garment category dropdown
+      if (quoteCategory) {
+        const sil = customizerState.silhouetteKey;
+        if (sil === 'hoodie' || sil === 'tee' || sil === 'cargo' || sil === 'varsity') {
+          quoteCategory.value = 'Street Wear';
+        } else if (sil === 'stringer' || sil === 'compression') {
+          quoteCategory.value = 'Gym Wear';
+        } else if (sil === 'biker' || sil === 'leather-pant') {
+          quoteCategory.value = 'Leather Wear';
+        } else if (sil === 'jersey' || sil === 'tracksuit') {
+          quoteCategory.value = 'Sports Wear';
+        } else if (sil === 'legging' || sil === 'bra') {
+          quoteCategory.value = 'Active Wear';
+        } else {
+          quoteCategory.value = 'Headwear & Gear';
+        }
       }
 
       if (quoteSec) {
         quoteSec.scrollIntoView({ behavior: 'smooth' });
-        showNotification('Studio Lab tech pack specs transferred to official quote form!');
+        showNotification('Studio Lab tech pack specs transferred to official quote form (routed to info@sazwearz.com)!');
       }
     });
   }
 }
 
-// 6. Global Export Map Tooltip Pins
-const MAP_HUBS = {
-  'usa': {
-    city: 'United States (New York & Los Angeles)',
-    transit: '3–4 Business Days via DHL Express DDP',
-    brands: '18+ Active Streetwear & Gymwear Labels'
+// 6. High-End Interactive 3D Digital Globe for Global Export Verification
+const GLOBE_HUBS = [
+  {
+    id: 'sialkot',
+    name: 'SIALKOT (ORIGIN HUB)',
+    short: 'Sialkot (Origin Hub)',
+    cities: 'Sialkot Export Manufacturing Zone, Pakistan',
+    lat: 32.4945,
+    lon: 74.5229,
+    isOrigin: true,
+    sla: 'Direct Factory Floor Handover & Air Freight Export Terminal',
+    brands: 'Saz Wearz Global HQ & Manufacturing Hub',
+    flag: '\uD83C\uDDF5\uD83C\uDDF0'
   },
-  'uk': {
-    city: 'United Kingdom (London & Manchester)',
-    transit: '3–4 Business Days via FedEx Priority DDP',
-    brands: '14+ Active Performance Brands'
+  {
+    id: 'usa',
+    name: 'United States',
+    short: 'USA',
+    cities: 'New York & Los Angeles',
+    lat: 38.5,
+    lon: -97.0,
+    sla: '3-5 Business Days Doorstep Delivery via DHL/FedEx/UPS',
+    brands: '18+ Active Streetwear & Gymwear Labels',
+    flag: '\uD83C\uDDFA\uD83C\uDDF8'
   },
-  'germany': {
-    city: 'Germany & Mainland Europe (Berlin, Frankfurt, Paris)',
-    transit: '3–4 Business Days via DHL Express DDP',
-    brands: '10+ Active European Fashion Houses'
+  {
+    id: 'uk',
+    name: 'United Kingdom',
+    short: 'UK',
+    cities: 'London & Manchester',
+    lat: 51.5074,
+    lon: -0.1278,
+    sla: '3-5 Business Days Doorstep Delivery via DHL/FedEx/UPS',
+    brands: '14+ Active Performance Brands',
+    flag: '\uD83C\uDDEC\uD83C\uDDF7'
   },
-  'canada': {
-    city: 'Canada (Toronto & Vancouver)',
-    transit: '3–5 Business Days via FedEx Priority',
-    brands: '6+ Active Urban Streetwear Brands'
+  {
+    id: 'canada',
+    name: 'Canada',
+    short: 'Canada',
+    cities: 'Toronto & Vancouver',
+    lat: 44.5,
+    lon: -79.38,
+    sla: '3-5 Business Days Doorstep Delivery via DHL/FedEx/UPS',
+    brands: '6+ Active Urban Streetwear Brands',
+    flag: '\uD83C\uDDE8\uD83C\uDDE6'
   },
-  'aus': {
-    city: 'Australia (Melbourne & Sydney)',
-    transit: '4–5 Business Days via SkyNet & DHL Express',
-    brands: '8+ Active Athleisure & Outerwear Labels'
+  {
+    id: 'germany',
+    name: 'Germany',
+    short: 'Germany',
+    cities: 'Berlin & Frankfurt',
+    lat: 52.5200,
+    lon: 13.4050,
+    sla: '3-5 Business Days Doorstep Delivery via DHL/FedEx/UPS',
+    brands: '10+ Active European Fashion Houses',
+    flag: '\uD83C\uDDE9\uD83C\uDDEA'
+  },
+  {
+    id: 'europe',
+    name: 'Europe (Central Hub)',
+    short: 'Europe Hub',
+    cities: 'Paris, Amsterdam & Milan',
+    lat: 48.8566,
+    lon: 2.3522,
+    sla: '3-5 Business Days Doorstep Delivery via DHL/FedEx/UPS',
+    brands: '12+ Active B2B Apparel Distributors',
+    flag: '\uD83C\uDDEA\uD83C\uDDFA'
+  },
+  {
+    id: 'australia',
+    name: 'Australia',
+    short: 'Australia',
+    cities: 'Sydney & Melbourne',
+    lat: -33.8688,
+    lon: 151.2093,
+    sla: '3-5 Business Days Doorstep Delivery via DHL/FedEx/UPS',
+    brands: '8+ Active Athleisure & Outerwear Labels',
+    flag: '\uD83C\uDDE6\uD83C\uDDFA'
   }
-};
+];
 
-function initMapPins() {
-  const pins = document.querySelectorAll('.map-hub-pin');
-  const cityEl = document.getElementById('map-tooltip-city');
-  const transitEl = document.getElementById('map-tooltip-transit');
-  const brandsEl = document.getElementById('map-tooltip-brands');
+function init3DGlobe() {
+  const wrapper = document.getElementById('globe-3d-wrapper');
+  const canvas = document.getElementById('globe-3d-canvas');
+  const pinsOverlay = document.getElementById('globe-pins-overlay');
 
-  pins.forEach(pin => {
-    pin.addEventListener('mouseenter', () => {
-      const hubKey = pin.getAttribute('data-hub');
-      const data = MAP_HUBS[hubKey];
-      if (data && cityEl && transitEl && brandsEl) {
-        cityEl.textContent = data.city;
-        transitEl.textContent = data.transit;
-        brandsEl.textContent = data.brands;
+  if (!wrapper || !canvas || !pinsOverlay) return;
+
+  if (typeof THREE === 'undefined') {
+    console.warn('Three.js not loaded. Skipping 3D globe initialization.');
+    return;
+  }
+
+  const RADIUS = 68;
+  let width = wrapper.clientWidth || 800;
+  let height = wrapper.clientHeight || 600;
+
+  // 1. Scene, Camera, Renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, width / height, 1, 1000);
+  camera.position.set(0, 4, 260);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true,
+    antialias: true,
+    powerPreference: 'high-performance'
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(width, height);
+
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+  scene.add(ambientLight);
+
+  const dirLight1 = new THREE.DirectionalLight(0x38bdf8, 1.8);
+  dirLight1.position.set(200, 150, 250);
+  scene.add(dirLight1);
+
+  const dirLight2 = new THREE.DirectionalLight(0x1d4ed8, 1.2);
+  dirLight2.position.set(-200, -100, -150);
+  scene.add(dirLight2);
+
+  // Root Globe Group
+  const globeGroup = new THREE.Group();
+  globeGroup.rotation.x = 0.22;
+  globeGroup.rotation.y = -1.15; // Initial angle highlighting Sialkot and global routes
+  scene.add(globeGroup);
+
+  // 2. Translucent Midnight Navy Base Sphere
+  const sphereGeo = new THREE.SphereGeometry(RADIUS, 64, 64);
+  const sphereMat = new THREE.MeshPhongMaterial({
+    color: 0x071126,
+    emissive: 0x020713,
+    specular: 0x2563eb,
+    shininess: 35,
+    transparent: true,
+    opacity: 0.94
+  });
+  const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
+  globeGroup.add(sphereMesh);
+
+  // Outer Atmospheric Glow Shell
+  const atmosphereGeo = new THREE.SphereGeometry(RADIUS * 1.025, 48, 48);
+  const atmosphereMat = new THREE.MeshBasicMaterial({
+    color: 0x0284c7,
+    transparent: true,
+    opacity: 0.12,
+    side: THREE.BackSide,
+    blending: THREE.AdditiveBlending
+  });
+  const atmosphereMesh = new THREE.Mesh(atmosphereGeo, atmosphereMat);
+  globeGroup.add(atmosphereMesh);
+
+  // 3. Glowing Neon-Blue Latitude & Longitude Grid Lines
+  const gridMat = new THREE.LineBasicMaterial({
+    color: 0x1e3a8a,
+    transparent: true,
+    opacity: 0.32
+  });
+
+  // Latitudes
+  const latSteps = [-60, -40, -20, 0, 20, 40, 60];
+  latSteps.forEach(latDeg => {
+    const latRad = latDeg * (Math.PI / 180);
+    const r = RADIUS * Math.cos(latRad);
+    const y = RADIUS * Math.sin(latRad);
+    const pts = [];
+    for (let a = 0; a <= 64; a++) {
+      const th = (a / 64) * Math.PI * 2;
+      pts.push(new THREE.Vector3(r * Math.cos(th), y, r * Math.sin(th)));
+    }
+    const ringLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), gridMat);
+    globeGroup.add(ringLine);
+  });
+
+  // Longitudes (12 meridians)
+  for (let i = 0; i < 12; i++) {
+    const lonRad = (i * 30) * (Math.PI / 180);
+    const pts = [];
+    for (let a = 0; a <= 64; a++) {
+      const latRad = (a / 64) * Math.PI * 2;
+      const y = RADIUS * Math.sin(latRad);
+      const r = RADIUS * Math.cos(latRad);
+      const x = r * Math.sin(lonRad);
+      const z = r * Math.cos(lonRad);
+      pts.push(new THREE.Vector3(x, y, z));
+    }
+    const meridianLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), gridMat);
+    globeGroup.add(meridianLine);
+  }
+
+  // Helper: Lat/Lon to 3D Cartesian
+  function latLonToVector3(lat, lon, r) {
+    const phi = (90 - lat) * (Math.PI / 180);
+    const theta = (lon + 180) * (Math.PI / 180);
+    const x = -r * Math.sin(phi) * Math.cos(theta);
+    const y = r * Math.cos(phi);
+    const z = r * Math.sin(phi) * Math.sin(theta);
+    return new THREE.Vector3(x, y, z);
+  }
+
+  // 4. Dotted Continent Landmasses Generator
+  function createContinentDots(r) {
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = 360;
+    offCanvas.height = 180;
+    const ctx = offCanvas.getContext('2d');
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, 360, 180);
+    ctx.fillStyle = '#ffffff';
+
+    function drawPoly(pts) {
+      if (!pts || pts.length < 3) return;
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0] + 180, 90 - pts[0][1]);
+      for (let i = 1; i < pts.length; i++) {
+        ctx.lineTo(pts[i][0] + 180, 90 - pts[i][1]);
       }
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // North America
+    drawPoly([
+      [-168, 65], [-160, 71], [-130, 70], [-100, 74], [-80, 72], [-60, 60], [-55, 48],
+      [-66, 44], [-75, 36], [-80, 25], [-82, 30], [-90, 30], [-97, 26], [-97, 20],
+      [-87, 13], [-80, 8], [-85, 12], [-105, 20], [-115, 32], [-124, 48], [-135, 58], [-168, 65]
+    ]);
+    drawPoly([[-45, 60], [-20, 70], [-25, 83], [-55, 83], [-50, 70], [-45, 60]]);
+
+    // South America
+    drawPoly([
+      [-78, 12], [-60, 10], [-35, -5], [-38, -13], [-42, -23], [-55, -34],
+      [-65, -55], [-75, -52], [-73, -40], [-71, -30], [-80, -5], [-78, 12]
+    ]);
+
+    // Europe & British Isles & Scandinavia
+    drawPoly([
+      [-10, 36], [-9, 44], [-2, 44], [3, 51], [8, 55], [5, 62], [10, 71], [30, 70],
+      [45, 68], [60, 65], [60, 50], [40, 45], [30, 40], [25, 36], [15, 38], [-5, 36], [-10, 36]
+    ]);
+    drawPoly([[-10, 51], [-6, 59], [2, 53], [-1, 50], [-10, 51]]);
+    drawPoly([[5, 58], [12, 56], [22, 60], [28, 70], [20, 71], [10, 64], [5, 58]]);
+
+    // Africa & Madagascar
+    drawPoly([
+      [-17, 15], [-17, 28], [-5, 36], [10, 37], [25, 32], [35, 30], [51, 12],
+      [42, 0], [40, -10], [35, -25], [26, -34], [18, -34], [12, -18], [9, 4], [0, 6], [-17, 15]
+    ]);
+    drawPoly([[43, -12], [50, -13], [47, -25], [44, -25], [43, -12]]);
+
+    // Asia & Middle East & Indian Subcontinent & Japan & SE Asia
+    drawPoly([
+      [35, 30], [40, 45], [60, 50], [60, 65], [100, 77], [170, 66], [180, 65], [170, 60],
+      [140, 50], [130, 35], [120, 22], [108, 12], [100, 1], [90, 22], [80, 8],
+      [70, 22], [60, 25], [55, 15], [45, 13], [35, 30]
+    ]);
+    drawPoly([[35, 30], [55, 27], [60, 22], [55, 15], [45, 13], [35, 30]]);
+    drawPoly([[60, 25], [75, 35], [88, 25], [80, 8], [72, 18], [60, 25]]);
+    drawPoly([[130, 31], [142, 45], [140, 36], [130, 31]]);
+    drawPoly([[98, 5], [105, -5], [115, -8], [120, 5], [105, 10], [98, 5]]);
+
+    // Australia & New Zealand
+    drawPoly([
+      [113, -22], [115, -34], [135, -36], [148, -38], [153, -28], [145, -15],
+      [136, -12], [128, -15], [113, -22]
+    ]);
+    drawPoly([[166, -46], [178, -37], [172, -43], [166, -46]]);
+
+    const imgData = ctx.getImageData(0, 0, 360, 180).data;
+    const positions = [];
+    const step = 2.4;
+    for (let lat = -70; lat <= 75; lat += step) {
+      for (let lon = -180; lon < 180; lon += step) {
+        const px = Math.floor(lon + 180);
+        const py = Math.floor(90 - lat);
+        const idx = (py * 360 + px) * 4;
+        if (imgData[idx] > 128) {
+          const v = latLonToVector3(lat, lon, r * 1.006);
+          positions.push(v.x, v.y, v.z);
+        }
+      }
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    const mat = new THREE.PointsMaterial({
+      size: 2.2,
+      color: 0x38bdf8,
+      transparent: true,
+      opacity: 0.85
     });
+    return new THREE.Points(geo, mat);
+  }
 
-    pin.addEventListener('click', () => {
-      const hubKey = pin.getAttribute('data-hub');
-      const data = MAP_HUBS[hubKey];
-      if (data) {
-        showNotification(`Export Route: Sialkot ➔ ${data.city} (${data.transit})`);
+  const landDotsMesh = createContinentDots(RADIUS);
+  globeGroup.add(landDotsMesh);
+
+  // Compute 3D coordinates for each hub
+  GLOBE_HUBS.forEach(h => {
+    h.pos = latLonToVector3(h.lat, h.lon, RADIUS * 1.006);
+  });
+
+  const originHub = GLOBE_HUBS.find(h => h.isOrigin);
+  const pSialkot = originHub.pos;
+
+  // 5. Central Origin Point: Sialkot Beacon & Radar Ripple
+  const sialkotGeo = new THREE.SphereGeometry(2.0, 16, 16);
+  const sialkotMat = new THREE.MeshBasicMaterial({ color: 0x00ffff });
+  const sialkotPinMesh = new THREE.Mesh(sialkotGeo, sialkotMat);
+  sialkotPinMesh.position.copy(pSialkot);
+  globeGroup.add(sialkotPinMesh);
+
+  // Animated Radar Ripple Rings at Sialkot
+  const normalSialkot = pSialkot.clone().normalize();
+  const quatSialkot = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), normalSialkot);
+  const radarRings = [];
+
+  for (let i = 0; i < 3; i++) {
+    const ringGeo = new THREE.RingGeometry(0.8, 1.4, 32);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color: 0x22d3ee,
+      transparent: true,
+      opacity: 0.8,
+      side: THREE.DoubleSide
+    });
+    const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+    ringMesh.position.copy(pSialkot.clone().multiplyScalar(1.004));
+    ringMesh.quaternion.copy(quatSialkot);
+    globeGroup.add(ringMesh);
+    radarRings.push({ mesh: ringMesh, mat: ringMat, offset: i * 0.33 });
+  }
+
+  // 6. 3D Curved Neon Flight Path Arcs & Live Light Particles
+  function createCurvedFlightArc(p1, p2, baseRadius) {
+    const points = [];
+    const count = 50;
+    const angle = p1.angleTo(p2);
+    const maxAltitude = Math.min(24, Math.max(10, angle * 13));
+
+    for (let i = 0; i <= count; i++) {
+      const t = i / count;
+      const sinTotal = Math.sin(angle);
+      let v;
+      if (sinTotal > 0.001) {
+        const w1 = Math.sin((1 - t) * angle) / sinTotal;
+        const w2 = Math.sin(t * angle) / sinTotal;
+        v = p1.clone().multiplyScalar(w1).add(p2.clone().multiplyScalar(w2)).normalize();
+      } else {
+        v = p1.clone().lerp(p2, t).normalize();
       }
+      const altitude = Math.sin(t * Math.PI) * maxAltitude;
+      points.push(v.multiplyScalar(baseRadius + altitude));
+    }
+    return points;
+  }
+
+  const routes = [];
+  const destHubs = GLOBE_HUBS.filter(h => !h.isOrigin);
+
+  destHubs.forEach(dest => {
+    // Destination 3D Pin Point
+    const destGeo = new THREE.SphereGeometry(1.3, 12, 12);
+    const destMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const destPin = new THREE.Mesh(destGeo, destMat);
+    destPin.position.copy(dest.pos);
+    globeGroup.add(destPin);
+
+    // 3D Curved Neon Arc Line
+    const curvePoints = createCurvedFlightArc(pSialkot, dest.pos, RADIUS * 1.006);
+    const curveGeo = new THREE.BufferGeometry().setFromPoints(curvePoints);
+    const curveMat = new THREE.LineBasicMaterial({
+      color: 0x00d4ff,
+      transparent: true,
+      opacity: 0.65,
+      linewidth: 2
+    });
+    const arcLine = new THREE.Line(curveGeo, curveMat);
+    globeGroup.add(arcLine);
+
+    // Animated Light Particles (2 per route)
+    const routeParticles = [];
+    for (let p = 0; p < 2; p++) {
+      const partGeo = new THREE.SphereGeometry(1.1, 8, 8);
+      const partMat = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.95
+      });
+      const partMesh = new THREE.Mesh(partGeo, partMat);
+      globeGroup.add(partMesh);
+      routeParticles.push({
+        mesh: partMesh,
+        progress: p * 0.5
+      });
+    }
+
+    routes.push({
+      id: dest.id,
+      hub: dest,
+      line: arcLine,
+      points: curvePoints,
+      particles: routeParticles,
+      speed: 1.0
     });
   });
+
+  // 7. Screen-Projected HTML Pins
+  pinsOverlay.innerHTML = '';
+  const pinMap = {};
+
+  GLOBE_HUBS.forEach(hub => {
+    const el = document.createElement('div');
+    el.className = 'globe-pin-item absolute transition-opacity duration-200 pointer-events-auto select-none';
+    el.setAttribute('data-hub-id', hub.id);
+
+    if (hub.isOrigin) {
+      el.innerHTML = `
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-600/90 border-2 border-white backdrop-blur-md shadow-[0_0_20px_#2563eb] text-white">
+          <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+          <span class="text-[11px] sm:text-xs font-headline font-black uppercase tracking-wider whitespace-nowrap">${hub.name}</span>
+        </div>
+      `;
+    } else {
+      el.innerHTML = `
+        <div class="globe-dest-btn group flex flex-col items-center cursor-pointer">
+          <!-- Floating SLA Tooltip on Hover -->
+          <div class="pin-sla-tooltip opacity-0 group-hover:opacity-100 transition-opacity duration-200 mb-1 px-2.5 py-1 rounded-lg bg-slate-950/95 border border-cyan-400 text-[10px] font-mono font-bold text-cyan-300 whitespace-nowrap shadow-xl pointer-events-none">
+            ${hub.sla}
+          </div>
+          <!-- Pin Badge -->
+          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/90 border border-cyan-400/50 group-hover:border-cyan-300 group-hover:bg-blue-900/90 backdrop-blur-md shadow-[0_0_12px_rgba(6,182,212,0.4)] transition-all transform group-hover:scale-110">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_#22d3ee]"></span>
+            <span class="text-[10px] sm:text-xs font-mono font-bold text-white whitespace-nowrap">${hub.short}</span>
+            <span class="text-[11px]">${hub.flag || ''}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    el.addEventListener('mouseenter', () => highlightHub(hub.id));
+    el.addEventListener('mouseleave', () => resetHubHighlight());
+    el.addEventListener('click', () => selectHub(hub.id));
+
+    pinsOverlay.appendChild(el);
+    pinMap[hub.id] = el;
+  });
+
+  let isHoveringPin = false;
+
+  function highlightHub(hubId) {
+    isHoveringPin = true;
+    const hub = GLOBE_HUBS.find(h => h.id === hubId);
+    if (!hub || hub.isOrigin) return;
+
+    routes.forEach(r => {
+      if (r.id === hubId) {
+        r.line.material.color.setHex(0x00ffff);
+        r.line.material.opacity = 1.0;
+        r.speed = 2.2;
+      } else {
+        r.line.material.opacity = 0.18;
+        r.speed = 0.4;
+      }
+    });
+
+    const countryEl = document.getElementById('globe-selected-country');
+    const slaEl = document.getElementById('globe-selected-sla');
+    const brandsEl = document.getElementById('globe-selected-brands');
+
+    if (countryEl) countryEl.textContent = `${hub.name} (${hub.cities})`;
+    if (slaEl) slaEl.textContent = hub.sla;
+    if (brandsEl) brandsEl.textContent = `${hub.brands} â€¢ Express DDP Clearance`;
+  }
+
+  function resetHubHighlight() {
+    isHoveringPin = false;
+    routes.forEach(r => {
+      r.line.material.color.setHex(0x00d4ff);
+      r.line.material.opacity = 0.65;
+      r.speed = 1.0;
+    });
+  }
+
+  function selectHub(hubId) {
+    const hub = GLOBE_HUBS.find(h => h.id === hubId);
+    if (!hub) return;
+    highlightHub(hubId);
+
+    // Smoothly rotate globe to center target hub
+    const targetRotY = - (hub.lon * Math.PI / 180) - 0.2;
+    const targetRotX = Math.max(-0.4, Math.min(0.4, (hub.lat * Math.PI / 180) * 0.4));
+    
+    const startX = globeGroup.rotation.x;
+    const startY = globeGroup.rotation.y;
+    const startTime = performance.now();
+    const duration = 800;
+
+    function stepRotate(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      globeGroup.rotation.x = startX + (targetRotX - startX) * ease;
+      globeGroup.rotation.y = startY + (targetRotY - startY) * ease;
+      if (progress < 1) {
+        requestAnimationFrame(stepRotate);
+      }
+    }
+    requestAnimationFrame(stepRotate);
+  }
+
+  // 8. Mouse & Touch Drag Controls
+  let isDragging = false;
+  let previousPointer = { x: 0, y: 0 };
+  let pointerVelocity = { x: 0, y: 0 };
+  let autoRotate = true;
+  let autoRotateTimeout = null;
+
+  wrapper.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    autoRotate = false;
+    clearTimeout(autoRotateTimeout);
+    previousPointer = { x: e.clientX, y: e.clientY };
+    pointerVelocity = { x: 0, y: 0 };
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - previousPointer.x;
+    const dy = e.clientY - previousPointer.y;
+
+    globeGroup.rotation.y += dx * 0.005;
+    globeGroup.rotation.x = Math.max(-0.65, Math.min(0.65, globeGroup.rotation.x + dy * 0.005));
+
+    pointerVelocity = { x: dx, y: dy };
+    previousPointer = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('pointerup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    clearTimeout(autoRotateTimeout);
+    autoRotateTimeout = setTimeout(() => {
+      autoRotate = true;
+    }, 2800);
+  });
+
+  // Window resize handler
+  function onResize() {
+    if (!wrapper || !renderer || !camera) return;
+    width = wrapper.clientWidth;
+    height = wrapper.clientHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  }
+  window.addEventListener('resize', onResize);
+
+  // 9. Render & Animation Loop
+  const tempWorldPos = new THREE.Vector3();
+  const tempNormal = new THREE.Vector3();
+  const cameraDir = new THREE.Vector3();
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (!isDragging) {
+      pointerVelocity.x *= 0.92;
+      pointerVelocity.y *= 0.92;
+      globeGroup.rotation.y += pointerVelocity.x * 0.003;
+      globeGroup.rotation.x = Math.max(-0.65, Math.min(0.65, globeGroup.rotation.x + pointerVelocity.y * 0.003));
+
+      if (autoRotate && !isHoveringPin) {
+        globeGroup.rotation.y += 0.0016;
+      }
+    }
+
+    // Animate radar ripple rings at Sialkot
+    const timeSec = Date.now() * 0.001;
+    radarRings.forEach(r => {
+      const p = (timeSec * 0.9 + r.offset) % 1.0;
+      r.mesh.scale.set(1 + p * 3.8, 1 + p * 3.8, 1);
+      r.mat.opacity = Math.max(0, (1 - p) * 0.85);
+    });
+
+    // Animate light particles along flight arcs
+    routes.forEach(r => {
+      r.particles.forEach(p => {
+        p.progress = (p.progress + 0.004 * r.speed) % 1.0;
+        const idx = Math.min(r.points.length - 1, Math.floor(p.progress * r.points.length));
+        p.mesh.position.copy(r.points[idx]);
+      });
+    });
+
+    // Project HTML pins onto 2D screen
+    camera.getWorldDirection(cameraDir);
+    const curW = wrapper.clientWidth;
+    const curH = wrapper.clientHeight;
+
+    GLOBE_HUBS.forEach(hub => {
+      const pinEl = pinMap[hub.id];
+      if (!pinEl) return;
+
+      tempWorldPos.copy(hub.pos).applyMatrix4(globeGroup.matrixWorld);
+      tempNormal.copy(tempWorldPos).sub(globeGroup.position).normalize();
+      const dot = tempNormal.dot(camera.position.clone().sub(tempWorldPos).normalize());
+
+      if (dot > 0.08) {
+        tempWorldPos.project(camera);
+        const screenX = (tempWorldPos.x * 0.5 + 0.5) * curW;
+        const screenY = (-tempWorldPos.y * 0.5 + 0.5) * curH;
+        pinEl.style.transform = `translate(-50%, -100%) translate(${screenX}px, ${screenY}px)`;
+        pinEl.style.opacity = Math.min(1, (dot - 0.08) / 0.22);
+        pinEl.style.display = 'block';
+      } else {
+        pinEl.style.opacity = '0';
+        pinEl.style.display = 'none';
+      }
+    });
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+}
+
+function initMapPins() {
+  init3DGlobe();
 }
 
 // 7. Quote Form & File Upload
@@ -1799,18 +2570,51 @@ function initQuoteForm() {
         return;
       }
 
+      // Prepare direct inquiry mailto link addressed to official business email: info@sazwearz.com
+      const mailSubject = encodeURIComponent(`Production Quote Inquiry: ${brandName || fullName} - SAZ WEARZ`);
+      const mailBody = encodeURIComponent(
+        `SAZ WEARZ - PRODUCTION QUOTE INQUIRY\n` +
+        `=========================================\n` +
+        `• Client Name: ${fullName}\n` +
+        `• Brand / Label: ${brandName || 'Emerging Brand'}\n` +
+        `• Work Email: ${email}\n` +
+        `• WhatsApp / Phone: ${phone}\n` +
+        `• Garment Category: ${category}\n` +
+        `• Estimated Quantity: ${qty}\n` +
+        `• Technical Notes & Specs:\n${notes || 'Standard manufacturing requested'}\n\n` +
+        `Official Business Routing: info@sazwearz.com\n` +
+        `Sialkot Manufacturing Unit, Pakistan.`
+      );
+      const mailtoUrl = `mailto:info@sazwearz.com?subject=${mailSubject}&body=${mailBody}`;
+
       const modal = document.getElementById('quote-success-modal');
       const modalSummary = document.getElementById('modal-summary');
+      const modalEmailLink = document.getElementById('modal-email-link');
+
+      if (modalEmailLink) {
+        modalEmailLink.href = mailtoUrl;
+      }
+
       if (modal && modalSummary) {
         modalSummary.innerHTML = `
           <div class="space-y-2 text-left text-sm text-slate-300 font-body">
             <p><strong class="text-white">Brand Partner:</strong> ${escapeHtml(brandName || 'Emerging Brand')} (${escapeHtml(fullName)})</p>
             <p><strong class="text-white">Direct Contact:</strong> ${escapeHtml(email)} &bull; ${escapeHtml(phone)}</p>
             <p><strong class="text-white">Category & Volume:</strong> ${escapeHtml(category)} (${escapeHtml(qty)})</p>
-            <p class="text-xs text-sky-400 mt-2 font-mono">Status: Technical review logged at Sialkot manufacturing floor. Universal Low MOQ: 30 Pieces.</p>
+            <div class="p-2.5 rounded-lg bg-blue-950/70 border border-sky-400/30 text-xs text-sky-200 mt-2 font-mono flex items-center gap-2">
+              <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>Delivered directly to official desk: <strong class="text-white">info@sazwearz.com</strong></span>
+            </div>
           </div>
         `;
         modal.classList.remove('hidden');
+      }
+
+      // Automatically dispatch to default email client addressed to info@sazwearz.com
+      try {
+        window.location.href = mailtoUrl;
+      } catch (err) {
+        console.log('Email client dispatch:', err);
       }
 
       form.reset();
@@ -2352,4 +3156,26 @@ function initBlogModal() {
     }
   });
 }
+
+// Manufacturing Process Interconnected Pipeline Sequential Animation
+function initProcessPipeline() {
+  const section = document.getElementById('process');
+  if (!section) return;
+  const cards = section.querySelectorAll('.pipeline-card');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach((card, idx) => {
+          setTimeout(() => {
+            card.classList.add('pipeline-active-node');
+          }, idx * 140);
+        });
+      }
+    });
+  }, { threshold: 0.12 });
+  observer.observe(section);
+}
+
 

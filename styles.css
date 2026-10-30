@@ -615,4 +615,332 @@ body {
   line-height: 1.7;
 }
 
+/* ========================================================
+   STITCHEXPO-STYLE DYNAMIC ANIMATED HERO CAROUSEL
+   ======================================================== */
+
+.hero-carousel-container {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--navy-deep);
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+/* Ken Burns Micro-Zoom Background Animation */
+@keyframes kenBurnsZoomEffect {
+  0% {
+    transform: scale(1) translateZ(0);
+  }
+  100% {
+    transform: scale(1.045) translateZ(0);
+  }
+}
+
+.hero-slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: center center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+.hero-slide.active .hero-slide-bg {
+  animation: kenBurnsZoomEffect 8s ease-out forwards;
+}
+
+/* Slide Content Entrance Sequence */
+.hero-slide .slide-content > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-slide.active .slide-content > *:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.12s;
+}
+
+.hero-slide.active .slide-content > *:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.24s;
+}
+
+.hero-slide.active .slide-content > *:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.36s;
+}
+
+.hero-slide.active .slide-content > *:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.48s;
+}
+
+/* Numbered Pagination Buttons */
+.hero-page-btn {
+  color: #94a3b8;
+  font-family: 'Lato', monospace, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.hero-page-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hero-page-btn.active-page {
+  color: #38bdf8;
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.2);
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+/* Sleek Progress Bar Timer */
+.hero-progress-track {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+#hero-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+  border-radius: 9999px;
+  transition: width 0.05s linear;
+}
+
+/* High-End 3D Digital Globe Verification Styles */
+.globe-pin-item {
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  pointer-events: auto;
+}
+
+.globe-dest-btn:hover .pin-sla-tooltip {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.pin-sla-tooltip {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(0);
+}
+
+/* Modern Footer Social Media Icons in Electric Royal Blue */
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.85rem;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon-btn:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(30, 58, 138, 0.5) 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5), 0 0 16px rgba(56, 189, 248, 0.4);
+}
+
+.social-icon-btn:hover::before {
+  opacity: 1;
+}
+
+.social-icon-btn svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon-btn:hover svg {
+  transform: scale(1.12);
+}
+
+/* ========================================================
+   INTERCONNECTED ASSEMBLY PIPELINE CHAIN (SECTION #PROCESS)
+   ======================================================== */
+
+/* Pipeline Card & Assembly Line Joints */
+.pipeline-card {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s ease;
+  position: relative;
+  background: rgba(11, 17, 32, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.pipeline-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -8px rgba(11, 17, 32, 0.95), 0 0 28px rgba(37, 99, 235, 0.45);
+  border-color: rgba(56, 189, 248, 0.6);
+}
+
+/* Metallic Circular Pipeline Node Badge */
+.pipeline-node-badge {
+  background: radial-gradient(circle at 35% 35%, #38bdf8 0%, #2563eb 50%, #0b1120 100%);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.45), inset 0 -2px 4px rgba(0, 0, 0, 0.7);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pipeline-card:hover .pipeline-node-badge {
+  transform: scale(1.14);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.85), 0 0 45px rgba(37, 99, 235, 0.65), inset 0 2px 6px rgba(255, 255, 255, 0.9);
+  border-color: #ffffff;
+}
+
+/* Radial Radar Pulse from Joint Badge */
+.pipeline-joint-pulse {
+  position: absolute;
+  inset: -5px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.35);
+  animation: radarPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Animated Pipeline Laser Flow (Desktop Horizontal Connectors) */
+@keyframes pipelineLaser {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+}
+
+.pipeline-laser-flow {
+  background: linear-gradient(90deg, transparent 0%, #38bdf8 50%, #ffffff 85%, transparent 100%);
+  animation: pipelineLaser 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Inter-Row Conduit Flow Animation */
+@keyframes conduitFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.pipeline-conduit-flow {
+  background: linear-gradient(90deg, #2563eb 0%, #38bdf8 30%, #ffffff 50%, #38bdf8 70%, #2563eb 100%);
+  background-size: 200% 100%;
+  animation: conduitFlow 2.8s linear infinite;
+}
+
+/* Glowing Pulse on Active Node */
+.pipeline-active-node {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+}
+
+/* Mobile Vertical Glowing Pipeline Rail */
+@media (max-width: 1023px) {
+  .mobile-pipeline-track {
+    position: relative;
+    padding-left: 2rem;
+  }
+  
+  .mobile-pipeline-track::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 24px;
+    bottom: 40px;
+    width: 3px;
+    background: linear-gradient(180deg, #2563eb 0%, #38bdf8 50%, #2563eb 100%);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.65), 0 0 20px rgba(37, 99, 235, 0.4);
+    border-radius: 9999px;
+  }
+  
+  .mobile-pipeline-track::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 24px;
+    width: 7px;
+    height: 36px;
+    border-radius: 9999px;
+    background: #ffffff;
+    box-shadow: 0 0 16px #38bdf8, 0 0 24px #2563eb;
+    animation: flowPulseVertical 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes flowPulseVertical {
+  0% {
+    top: 24px;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 40px);
+    opacity: 0;
+  }
+}
+
+
+
+
 
