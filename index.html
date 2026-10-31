@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -98,6 +98,46 @@
           <a href="#about" class="desktop-nav-link hover:text-sky-400 transition-colors">About Us</a>
           <a href="#blog" class="desktop-nav-link hover:text-sky-400 transition-colors">Blog</a>
           <a href="#global-proof" class="desktop-nav-link hover:text-sky-400 transition-colors">Global Map</a>
+
+          <!-- Products Dropdown (3rd-last: Global Map -> Products -> Logistics -> FAQ) -->
+          <div class="relative group nav-dropdown-wrapper">
+            <button 
+              type="button" 
+              id="products-dropdown-btn" 
+              class="desktop-nav-link flex items-center gap-1.5 hover:text-sky-400 transition-colors focus:outline-none focus:text-sky-400 text-sm font-bold text-slate-300 py-1"
+              aria-expanded="false" 
+              aria-haspopup="true"
+              aria-controls="products-dropdown-menu"
+            >
+              <span>Products</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-sky-400 transition-transform duration-200 dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            <!-- Extensible Products Dropdown Menu -->
+            <div 
+              id="products-dropdown-menu" 
+              class="nav-dropdown-menu absolute left-0 top-full pt-2 w-56 z-50"
+              role="menu"
+              aria-labelledby="products-dropdown-btn"
+            >
+              <div class="p-2 rounded-2xl bg-[#0f172a]/95 backdrop-blur-xl border border-sky-400/30 shadow-2xl shadow-blue-950/80 space-y-1">
+                <a 
+                  href="/custom-hoodie-manufacturer" 
+                  class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-200 hover:text-white hover:bg-blue-900/60 border border-transparent hover:border-sky-400/30 transition-all group/item"
+                  role="menuitem"
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400 group-hover/item:scale-125 transition-transform"></span>
+                    <span>Custom Hoodies</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 text-[9px] uppercase tracking-wider bg-blue-950 text-sky-300 border border-sky-400/40 rounded font-mono font-bold">MOQ 30</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
           <a href="#logistics" class="desktop-nav-link hover:text-sky-400 transition-colors">Logistics</a>
           <a href="#faq" class="desktop-nav-link hover:text-sky-400 transition-colors">FAQ</a>
         </nav>
@@ -138,6 +178,35 @@
         <a href="#about" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">About Us &amp; Facility</a>
         <a href="#blog" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Manufacturing Blog &amp; Guides</a>
         <a href="#global-proof" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Global Proof &amp; Map</a>
+
+        <!-- Mobile Products Tap-to-Expand Accordion (Between Global Map and Logistics) -->
+        <div class="mobile-products-accordion border-y border-white/5 py-1">
+          <button 
+            type="button" 
+            id="mobile-products-toggle" 
+            class="w-full flex items-center justify-between text-base font-bold text-slate-300 hover:text-sky-400 py-1.5 focus:outline-none"
+            aria-expanded="false"
+          >
+            <div class="flex items-center gap-2">
+              <span>Products</span>
+              <span class="px-1.5 py-0.5 text-[9px] uppercase tracking-wider bg-blue-950 text-sky-400 border border-sky-400/40 rounded font-mono font-bold">1 Item</span>
+            </div>
+            <svg class="w-4 h-4 text-slate-400 transition-transform duration-200 mobile-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="mobile-products-submenu" class="hidden pl-3 pr-1 py-1 space-y-1 bg-slate-950/50 rounded-xl mt-1">
+            <a 
+              href="/custom-hoodie-manufacturer" 
+              class="mobile-nav-link flex items-center justify-between px-3 py-2 rounded-lg text-sm font-bold text-sky-300 hover:text-white hover:bg-blue-900/40 transition-colors"
+            >
+              <span>Custom Hoodies</span>
+              <span class="text-[10px] font-mono text-emerald-400 font-bold">MOQ 30 &rarr;</span>
+            </a>
+          </div>
+        </div>
+
         <a href="#logistics" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">Worldwide Logistics</a>
         <a href="#faq" class="mobile-nav-link text-slate-300 hover:text-sky-400 py-1">FAQ Accordion</a>
       </nav>
@@ -2717,6 +2786,7 @@
         <div class="space-y-3">
           <h4 class="text-xs font-bold uppercase tracking-wider text-white">Factory Navigation</h4>
           <ul class="space-y-2 text-xs">
+            <li><a href="/custom-hoodie-manufacturer" class="text-sky-400 font-bold hover:text-sky-300 transition-colors">Custom Hoodie Manufacturing</a></li>
             <li><a href="#categories" class="hover:text-sky-400 transition-colors">Garment Categories</a></li>
             <li><a href="#customizer" class="hover:text-sky-400 transition-colors">Studio Lab Prototyping</a></li>
             <li><a href="#process" class="hover:text-sky-400 transition-colors">8-Step Manufacturing Process</a></li>
@@ -2733,6 +2803,7 @@
         <div class="space-y-3">
           <h4 class="text-xs font-bold uppercase tracking-wider text-white">Product Lines</h4>
           <ul class="space-y-2 text-xs">
+            <li><a href="/custom-hoodie-manufacturer" class="text-sky-400 font-bold hover:text-sky-300 transition-colors flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>Custom Hoodies (MOQ 30)</a></li>
             <li><a href="#categories" class="hover:text-sky-400 transition-colors">Street Wear (Hoodies, Jeans & Cargos)</a></li>
             <li><a href="#categories" class="hover:text-sky-400 transition-colors">Gym Wear (Stringers & Tees)</a></li>
             <li><a href="#categories" class="hover:text-sky-400 transition-colors">Leather Wear (Biker Jackets)</a></li>

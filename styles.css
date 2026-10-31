@@ -940,6 +940,51 @@ body {
   }
 }
 
+/* ========================================================
+   PRODUCTS NAVIGATION DROPDOWN (DESKTOP & MOBILE)
+   ======================================================== */
+.nav-dropdown-wrapper {
+  position: relative;
+}
+
+.nav-dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s;
+  pointer-events: none;
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown-menu,
+.nav-dropdown-wrapper:focus-within .nav-dropdown-menu,
+.nav-dropdown-wrapper.is-open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-arrow {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+}
+
+.nav-dropdown-wrapper:hover .dropdown-arrow,
+.nav-dropdown-wrapper:focus-within .dropdown-arrow,
+.nav-dropdown-wrapper.is-open .dropdown-arrow {
+  transform: rotate(180deg);
+  color: #38bdf8;
+}
+
+.mobile-arrow {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-products-accordion.is-open .mobile-arrow {
+  transform: rotate(180deg);
+  color: #38bdf8;
+}
+
+
 
 
 

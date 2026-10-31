@@ -19,6 +19,7 @@ window.addEventListener('error', function(e) {
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
+  initProductsDropdown();
   initHeroCarousel();
   initCategoryExplorer();
   initProductDetailModal();
@@ -2553,6 +2554,37 @@ function initQuoteForm() {
   const form = document.getElementById('quote-form');
   const whatsappSubmitBtn = document.getElementById('btn-whatsapp-quote');
 
+  // Handle URL Query Params (e.g. from /custom-hoodie-manufacturer)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('category');
+    const prodParam = urlParams.get('product') || urlParams.get('item');
+    const quoteCategory = document.getElementById('quote-category');
+    const quoteNotes = document.getElementById('quote-notes');
+
+    if (catParam && quoteCategory) {
+      quoteCategory.value = catParam;
+    }
+    if (prodParam && quoteNotes) {
+      if (prodParam.toLowerCase().includes('hoodie')) {
+        if (quoteCategory) quoteCategory.value = 'Street Wear';
+        if (!quoteNotes.value) {
+          quoteNotes.value = `Custom Hoodie Manufacturing Enquiry (MOQ 30 Pieces):\n• Target Styles: Pullover / Zip-Up / Oversized Streetwear\n• Preferred Fabric & GSM: Cotton fleece (or custom specification)\n• Branding: Custom printing / embroidery / private labels\n• Destination Country & Postal Code: `;
+        }
+      }
+    }
+    if ((catParam || prodParam) && (window.location.hash === '#quote' || urlParams.get('scroll') === 'quote')) {
+      const quoteSec = document.getElementById('quote');
+      if (quoteSec) {
+        setTimeout(() => {
+          quoteSec.scrollIntoView({ behavior: 'smooth' });
+        }, 350);
+      }
+    }
+  } catch (err) {
+    console.warn('Quote URL param sync:', err);
+  }
+
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -3177,5 +3209,107 @@ function initProcessPipeline() {
   }, { threshold: 0.12 });
   observer.observe(section);
 }
+
+// Universal Cross-Page & Local Preview Navigation Handler
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a');
+  if (!link) return;
+  const href = link.getAttribute('href');
+  if (!href) return;
+
+  if (href === '/custom-hoodie-manufacturer' || href === 'custom-hoodie-manufacturer' || href.endsWith('/custom-hoodie-manufacturer')) {
+    if (window.location.protocol === 'file:') {
+      e.preventDefault();
+      const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      window.location.href = currentDir + 'custom-hoodie-manufacturer.html';
+      return;
+    }
+  }
+
+  if (href.startsWith('/#') || href.startsWith('/index.html#')) {
+    if (window.location.protocol === 'file:') {
+      e.preventDefault();
+      const targetHash = href.substring(href.indexOf('#'));
+      const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      window.location.href = currentDir + 'index.html' + targetHash;
+      return;
+    }
+  }
+});
+
+// Products Dropdown Controller (Hover, Click, Keyboard, Tap-to-Expand)
+function initProductsDropdown() {
+  const dropdownWrappers = document.querySelectorAll('.nav-dropdown-wrapper');
+  
+  dropdownWrappers.forEach(wrapper => {
+    const btn = wrapper.querySelector('#products-dropdown-btn');
+    const menu = wrapper.querySelector('.nav-dropdown-menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = wrapper.classList.contains('is-open');
+      if (isOpen) {
+        wrapper.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        wrapper.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        wrapper.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  });
+
+  // Mobile Tap-to-Expand Accordion
+  const mobileToggle = document.getElementById('mobile-products-toggle');
+  const mobileSubmenu = document.getElementById('mobile-products-submenu');
+  if (mobileToggle && mobileSubmenu) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const accordion = mobileToggle.closest('.mobile-products-accordion');
+      const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      
+      if (isExpanded) {
+        mobileSubmenu.classList.add('hidden');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        if (accordion) accordion.classList.remove('is-open');
+      } else {
+        mobileSubmenu.classList.remove('hidden');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        if (accordion) accordion.classList.add('is-open');
+      }
+    });
+  }
+
+  // Close when clicking outside or pressing Escape
+  document.addEventListener('click', (e) => {
+    dropdownWrappers.forEach(wrapper => {
+      if (!wrapper.contains(e.target)) {
+        wrapper.classList.remove('is-open');
+        const btn = wrapper.querySelector('#products-dropdown-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropdownWrappers.forEach(wrapper => {
+        wrapper.classList.remove('is-open');
+        const btn = wrapper.querySelector('#products-dropdown-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+}
+
+
 
 

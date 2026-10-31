@@ -2,6 +2,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/custom-hoodie-manufacturer",
+      "destination": "/custom-hoodie-manufacturer.html"
+    },
+    {
       "source": "/assets/images/:path*",
       "destination": "/:path*"
     }
