@@ -2517,7 +2517,7 @@
           </p>
         </div>
 
-        <form id="quote-form" action="mailto:info@sazwearz.com" method="POST" enctype="text/plain" class="space-y-6">
+        <form id="quote-form" action="https://formsubmit.co/info@sazwearz.com" method="POST" enctype="multipart/form-data" class="space-y-6">
           
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
@@ -2525,6 +2525,7 @@
               <input 
                 type="text" 
                 id="quote-name" 
+                name="Full Name"
                 required 
                 placeholder="e.g. Marcus Vance" 
                 class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
@@ -2535,6 +2536,7 @@
               <input 
                 type="text" 
                 id="quote-brand" 
+                name="Brand / Label Name"
                 required 
                 placeholder="e.g. Apex Streetwear NYC" 
                 class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
@@ -2548,6 +2550,7 @@
               <input 
                 type="email" 
                 id="quote-email" 
+                name="Work Email"
                 required 
                 placeholder="marcus@apexstreetwear.com" 
                 class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
@@ -2558,6 +2561,7 @@
               <input 
                 type="tel" 
                 id="quote-phone" 
+                name="WhatsApp / Phone Number"
                 required 
                 placeholder="+1 (555) 234-5678" 
                 class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
@@ -2570,6 +2574,7 @@
               <label for="quote-category" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Garment Category *</label>
               <select 
                 id="quote-category" 
+                name="Garment Category"
                 class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
               >
                 <option value="Street Wear">Street Wear</option>
@@ -2585,13 +2590,14 @@
               <label for="quote-qty" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Estimated Quantity (Low MOQ: 30 Pcs) *</label>
               <select 
                 id="quote-qty" 
+                name="Estimated Quantity"
                 class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white focus:outline-none focus:border-sky-400 transition-colors text-sm font-bold"
               >
-                <option value="Sample Order (1–5 Pieces)">Sample Order (1–5 Pieces)</option>
-                <option value="30 – 50 Pieces (Low MOQ Starter)" selected>30 – 50 Pieces (Low MOQ Starter)</option>
-                <option value="50 – 100 Pieces">50 – 100 Pieces</option>
-                <option value="100 – 300 Pieces">100 – 300 Pieces</option>
-                <option value="300 – 1,000 Pieces">300 – 1,000 Pieces</option>
+                <option value="Sample Order (1-5 Pieces)">Sample Order (1-5 Pieces)</option>
+                <option value="30 - 50 Pieces (Low MOQ Starter)" selected>30 - 50 Pieces (Low MOQ Starter)</option>
+                <option value="50 - 100 Pieces">50 - 100 Pieces</option>
+                <option value="100 - 300 Pieces">100 - 300 Pieces</option>
+                <option value="300 - 1,000 Pieces">300 - 1,000 Pieces</option>
                 <option value="1,000+ Pieces (Wholesale / Bulk)">1,000+ Pieces (Wholesale / Bulk)</option>
               </select>
             </div>
@@ -2604,7 +2610,7 @@
               id="drop-zone" 
               class="border-2 border-dashed border-sky-400/40 rounded-2xl p-6 text-center cursor-pointer hover:border-sky-300 hover:bg-slate-900/40 transition-all bg-slate-900/60"
             >
-              <input type="file" id="tech-pack-file" class="hidden" accept=".pdf,.png,.jpg,.jpeg,.ai,.psd" />
+              <input type="file" id="tech-pack-file" name="attachment" class="hidden" accept=".pdf,.png,.jpg,.jpeg,.ai,.psd" />
               <div class="space-y-2">
                 <svg class="w-8 h-8 text-sky-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
                 <p class="text-sm font-bold text-white">Click or drag & drop tech pack / sketches</p>
@@ -2621,10 +2627,32 @@
             <label for="quote-notes" class="block text-xs font-bold uppercase tracking-wider text-sky-200 mb-2">Project Notes & Fabric Specifications</label>
             <textarea 
               id="quote-notes" 
+              name="Project Notes & Fabric Specifications"
               rows="3" 
               placeholder="Tell us about desired GSM, custom colors, print/embroidery types, or target delivery date..." 
               class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors text-sm"
             ></textarea>
+          </div>
+
+          <!-- Error & Retry Banner (Shown ONLY on real failure) -->
+          <div id="quote-error-banner" class="hidden p-4 sm:p-5 rounded-2xl bg-rose-950/80 border border-rose-500/40 text-left space-y-3 shadow-lg shadow-rose-950/50">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              </div>
+              <div class="space-y-1">
+                <h4 id="quote-error-title" class="text-xs font-bold uppercase tracking-wider text-rose-300">Inquiry Transmission Issue</h4>
+                <p id="quote-error-msg" class="text-xs text-slate-200 leading-relaxed">We could not deliver your inquiry to info@sazwearz.com at this moment.</p>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2 pt-1">
+              <button type="button" id="btn-quote-retry" class="btn-glass-outline py-2.5 px-4 text-xs font-bold uppercase tracking-wider text-white">
+                &orarr; Retry Submission
+              </button>
+              <a id="error-whatsapp-link" href="https://wa.me/923010850746" target="_blank" class="btn-whatsapp-green py-2.5 px-4 text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-1.5">
+                <span>Send via Direct WhatsApp (+92 301 0850746)</span> &rarr;
+              </a>
+            </div>
           </div>
 
           <!-- Action Buttons -->
@@ -2665,7 +2693,7 @@
       </div>
       <div>
         <h3 class="font-headline text-2xl font-bold text-white uppercase">Quotation Request Received</h3>
-        <p class="font-serif italic text-slate-300 text-sm mt-1">Our Sialkot production team has logged your specifications.</p>
+        <p id="modal-success-msg" class="font-serif italic text-emerald-300 text-sm mt-1">Inquiry sent successfully to info@sazwearz.com! Our team will contact you within 24 hours.</p>
       </div>
       <div id="modal-summary" class="p-4 rounded-xl bg-slate-900 border border-white/10"></div>
       <div class="flex flex-col sm:flex-row gap-3">

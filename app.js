@@ -1,4 +1,4 @@
-// SAZ WEARZ (@sazwearz) - Modern B2B Clothing Manufacturing Controller
+﻿// SAZ WEARZ (@sazwearz) - Modern B2B Clothing Manufacturing Controller
 
 // Universal Image Fallback Handler (resolves root / vs assets/images/ seamlessly across Vercel & local)
 window.addEventListener('error', function(e) {
@@ -2346,7 +2346,7 @@ function init3DGlobe() {
 
     if (countryEl) countryEl.textContent = `${hub.name} (${hub.cities})`;
     if (slaEl) slaEl.textContent = hub.sla;
-    if (brandsEl) brandsEl.textContent = `${hub.brands} â€¢ Express DDP Clearance`;
+    if (brandsEl) brandsEl.textContent = `${hub.brands} - Express DDP Clearance`;
   }
 
   function resetHubHighlight() {
@@ -2553,6 +2553,12 @@ function initFileUpload() {
 function initQuoteForm() {
   const form = document.getElementById('quote-form');
   const whatsappSubmitBtn = document.getElementById('btn-whatsapp-quote');
+  const errorBanner = document.getElementById('quote-error-banner');
+  const retryBtn = document.getElementById('btn-quote-retry');
+
+  // Official Business Email Routing Endpoint
+  const INQUIRY_ENDPOINT = 'https://formsubmit.co/ajax/info@sazwearz.com';
+  const OFFICIAL_EMAIL = 'info@sazwearz.com';
 
   // Handle URL Query Params (e.g. from /custom-hoodie-manufacturer)
   try {
@@ -2569,7 +2575,7 @@ function initQuoteForm() {
       if (prodParam.toLowerCase().includes('hoodie')) {
         if (quoteCategory) quoteCategory.value = 'Street Wear';
         if (!quoteNotes.value) {
-          quoteNotes.value = `Custom Hoodie Manufacturing Enquiry (MOQ 30 Pieces):\n• Target Styles: Pullover / Zip-Up / Oversized Streetwear\n• Preferred Fabric & GSM: Cotton fleece (or custom specification)\n• Branding: Custom printing / embroidery / private labels\n• Destination Country & Postal Code: `;
+          quoteNotes.value = `Custom Hoodie Manufacturing Enquiry (MOQ 30 Pieces):\n- Target Styles: Pullover / Zip-Up / Oversized Streetwear\n- Preferred Fabric & GSM: Cotton fleece (or custom specification)\n- Branding: Custom printing / embroidery / private labels\n- Destination Country & Postal Code: `;
         }
       }
     }
@@ -2585,95 +2591,219 @@ function initQuoteForm() {
     console.warn('Quote URL param sync:', err);
   }
 
+  // Error & Retry Display Handler
+  function showErrorState(errInfo) {
+    const banner = document.getElementById('quote-error-banner');
+    const titleEl = document.getElementById('quote-error-title');
+    const msgEl = document.getElementById('quote-error-msg');
+    const whatsappLink = document.getElementById('error-whatsapp-link');
+
+    if (banner) {
+      if (titleEl && errInfo.title) titleEl.textContent = errInfo.title;
+      if (msgEl && errInfo.message) msgEl.textContent = errInfo.message;
+
+      if (whatsappLink && errInfo.inquiryDetails) {
+        const d = errInfo.inquiryDetails;
+        const waText = encodeURIComponent(
+          `*SAZ WEARZ - MANUFACTURING INQUIRY (DIRECT DISPATCH)*\n` +
+          `-----------------------------------------\n` +
+          `- *Client Name:* ${d.fullName}\n` +
+          `- *Brand / Label:* ${d.brandName || 'Emerging Brand'}\n` +
+          `- *Work Email:* ${d.email}\n` +
+          `- *WhatsApp / Phone:* ${d.phone}\n` +
+          `- *Category:* ${d.category}\n` +
+          `- *Estimated Quantity:* ${d.qty}\n` +
+          `${d.fileName ? `- *Tech Pack File:* ${d.fileName}\n` : ''}` +
+          `- *Project Notes & Specs:* ${d.notes || 'Bespoke manufacturing requested'}\n\n` +
+          `Direct Official Routing: ${OFFICIAL_EMAIL}`
+        );
+        whatsappLink.href = `https://wa.me/923010850746?text=${waText}`;
+      }
+
+      banner.classList.remove('hidden');
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      if (form) {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.click();
+      }
+    });
+  }
+
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const fullName = document.getElementById('quote-name').value.trim();
-      const brandName = document.getElementById('quote-brand').value.trim();
-      const email = document.getElementById('quote-email').value.trim();
-      const phone = document.getElementById('quote-phone').value.trim();
-      const category = document.getElementById('quote-category').value;
-      const qty = document.getElementById('quote-qty').value;
-      const notes = document.getElementById('quote-notes').value.trim();
+      const fullName = (document.getElementById('quote-name')?.value || '').trim();
+      const brandName = (document.getElementById('quote-brand')?.value || '').trim();
+      const email = (document.getElementById('quote-email')?.value || '').trim();
+      const phone = (document.getElementById('quote-phone')?.value || '').trim();
+      const category = document.getElementById('quote-category')?.value || 'Street Wear';
+      const qty = document.getElementById('quote-qty')?.value || '30 - 50 Pieces (Low MOQ Starter)';
+      const notes = (document.getElementById('quote-notes')?.value || '').trim();
 
       if (!fullName || !email || !phone) {
-        showNotification('Please provide your name, email, and WhatsApp number.', 'error');
+        showNotification('Please provide your full name, email, and WhatsApp / phone number.', 'error');
         return;
       }
 
-      // Prepare direct inquiry mailto link addressed to official business email: info@sazwearz.com
-      const mailSubject = encodeURIComponent(`Production Quote Inquiry: ${brandName || fullName} - SAZ WEARZ`);
-      const mailBody = encodeURIComponent(
-        `SAZ WEARZ - PRODUCTION QUOTE INQUIRY\n` +
-        `=========================================\n` +
-        `• Client Name: ${fullName}\n` +
-        `• Brand / Label: ${brandName || 'Emerging Brand'}\n` +
-        `• Work Email: ${email}\n` +
-        `• WhatsApp / Phone: ${phone}\n` +
-        `• Garment Category: ${category}\n` +
-        `• Estimated Quantity: ${qty}\n` +
-        `• Technical Notes & Specs:\n${notes || 'Standard manufacturing requested'}\n\n` +
-        `Official Business Routing: info@sazwearz.com\n` +
-        `Sialkot Manufacturing Unit, Pakistan.`
-      );
-      const mailtoUrl = `mailto:info@sazwearz.com?subject=${mailSubject}&body=${mailBody}`;
+      // Hide any previous error banner
+      if (errorBanner) errorBanner.classList.add('hidden');
 
-      const modal = document.getElementById('quote-success-modal');
-      const modalSummary = document.getElementById('modal-summary');
-      const modalEmailLink = document.getElementById('modal-email-link');
+      // 2. Submission Flow & Button Behavior:
+      // Single-Click Execution: immediately disable the button to prevent duplicate clicks, show active sending indicator
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
 
-      if (modalEmailLink) {
-        modalEmailLink.href = mailtoUrl;
-      }
-
-      if (modal && modalSummary) {
-        modalSummary.innerHTML = `
-          <div class="space-y-2 text-left text-sm text-slate-300 font-body">
-            <p><strong class="text-white">Brand Partner:</strong> ${escapeHtml(brandName || 'Emerging Brand')} (${escapeHtml(fullName)})</p>
-            <p><strong class="text-white">Direct Contact:</strong> ${escapeHtml(email)} &bull; ${escapeHtml(phone)}</p>
-            <p><strong class="text-white">Category & Volume:</strong> ${escapeHtml(category)} (${escapeHtml(qty)})</p>
-            <div class="p-2.5 rounded-lg bg-blue-950/70 border border-sky-400/30 text-xs text-sky-200 mt-2 font-mono flex items-center gap-2">
-              <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <span>Delivered directly to official desk: <strong class="text-white">info@sazwearz.com</strong></span>
-            </div>
-          </div>
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        submitBtn.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-2.5 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+          <span>Sending Inquiry...</span>
         `;
-        modal.classList.remove('hidden');
       }
 
-      // Automatically dispatch to default email client addressed to info@sazwearz.com
+      // Format Subject Line: "New Manufacturing Inquiry - [Brand Name / Customer Name]"
+      const subjectLine = `New Manufacturing Inquiry - ${brandName ? `${brandName} / ${fullName}` : fullName}`;
+
+      // Assemble Email Payload in FormData
+      const formData = new FormData();
+      formData.append('_subject', subjectLine);
+      formData.append('Full Name & Brand Name', `${fullName} (${brandName || 'N/A'})`);
+      formData.append('Full Name', fullName);
+      formData.append('Brand Name', brandName || 'N/A');
+      formData.append('Customer Email', email);
+      formData.append('WhatsApp / Phone Number', phone);
+      formData.append('Garment Category', category);
+      formData.append('Estimated Quantity', qty);
+      formData.append('Project Notes & Custom Specifications', notes || 'Standard bespoke manufacturing requested');
+      formData.append('_replyto', email);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+
+      const fileInput = document.getElementById('tech-pack-file');
+      const attachedFile = (fileInput && fileInput.files && fileInput.files[0]) ? fileInput.files[0] : null;
+      if (attachedFile) {
+        formData.append('attachment', attachedFile);
+        formData.append('Uploaded File Name', attachedFile.name);
+      }
+
+      let isVerified200Success = false;
+      let responseJson = null;
+
       try {
-        window.location.href = mailtoUrl;
+        const response = await fetch(INQUIRY_ENDPOINT, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        responseJson = await response.json().catch(() => ({}));
+
+        // Strict verification: ONLY treat as success on verified HTTP 200 / success state
+        if (response.ok && (responseJson.success === 'true' || responseJson.success === true || response.status === 200)) {
+          isVerified200Success = true;
+        } else if (responseJson && responseJson.message && responseJson.message.toLowerCase().includes('activat')) {
+          // Special handling if FormSubmit needs one-time inbox activation
+          showErrorState({
+            title: 'Action Required: Activate Form in info@sazwearz.com',
+            message: "A one-time 'Activate Form' link has been emailed to info@sazwearz.com. Click it once to activate direct delivery. In the meantime, you can send your inquiry directly via WhatsApp below.",
+            inquiryDetails: { fullName, brandName, email, phone, category, qty, notes, fileName: attachedFile ? attachedFile.name : '' }
+          });
+          return;
+        }
       } catch (err) {
-        console.log('Email client dispatch:', err);
+        console.error('Inquiry submission error:', err);
+        isVerified200Success = false;
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+          submitBtn.innerHTML = originalBtnHtml;
+        }
       }
 
-      form.reset();
-      const preview = document.getElementById('file-preview');
-      if (preview) preview.classList.add('hidden');
+      // Genuine Success State: Show confirmation ONLY after verified HTTP 200 response
+      if (isVerified200Success) {
+        const modal = document.getElementById('quote-success-modal');
+        const modalSummary = document.getElementById('modal-summary');
+        const modalSuccessMsg = document.getElementById('modal-success-msg');
+        const modalEmailLink = document.getElementById('modal-email-link');
+
+        if (modalSuccessMsg) {
+          modalSuccessMsg.textContent = 'Inquiry sent successfully to info@sazwearz.com! Our team will contact you within 24 hours.';
+        }
+
+        if (modalEmailLink) {
+          modalEmailLink.href = `mailto:${OFFICIAL_EMAIL}`;
+        }
+
+        if (modal && modalSummary) {
+          modalSummary.innerHTML = `
+            <div class="space-y-2 text-left text-sm text-slate-300 font-body">
+              <p><strong class="text-white">Brand / Client:</strong> ${escapeHtml(brandName ? `${brandName} (${fullName})` : fullName)}</p>
+              <p><strong class="text-white">Direct Contact:</strong> ${escapeHtml(email)} &bull; ${escapeHtml(phone)}</p>
+              <p><strong class="text-white">Garment Category:</strong> ${escapeHtml(category)}</p>
+              <p><strong class="text-white">Estimated Quantity:</strong> ${escapeHtml(qty)}</p>
+              ${attachedFile ? `<p><strong class="text-white">Attached File:</strong> ${escapeHtml(attachedFile.name)}</p>` : ''}
+              <div class="p-2.5 rounded-lg bg-emerald-950/70 border border-emerald-400/40 text-xs text-emerald-200 mt-2 font-mono flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Delivered directly to official desk: <strong class="text-white">${OFFICIAL_EMAIL}</strong></span>
+              </div>
+            </div>
+          `;
+          modal.classList.remove('hidden');
+        }
+
+        form.reset();
+        const preview = document.getElementById('file-preview');
+        if (preview) preview.classList.add('hidden');
+      } else {
+        // Transmission failed: Display explicit retry notice and direct WhatsApp shortcut
+        showErrorState({
+          title: 'Inquiry Transmission Issue',
+          message: 'We could not deliver your inquiry to info@sazwearz.com at this moment. Please click Retry Submission or contact our team directly via WhatsApp.',
+          inquiryDetails: { fullName, brandName, email, phone, category, qty, notes, fileName: attachedFile ? attachedFile.name : '' }
+        });
+      }
     });
   }
 
   if (whatsappSubmitBtn) {
     whatsappSubmitBtn.addEventListener('click', () => {
-      const fullName = document.getElementById('quote-name').value.trim() || 'Brand Partner';
-      const brandName = document.getElementById('quote-brand').value.trim() || 'Fashion Label';
-      const email = document.getElementById('quote-email').value.trim();
-      const category = document.getElementById('quote-category').value;
-      const qty = document.getElementById('quote-qty').value;
-      const notes = document.getElementById('quote-notes').value.trim();
+      const fullName = (document.getElementById('quote-name')?.value || '').trim() || 'Brand Partner';
+      const brandName = (document.getElementById('quote-brand')?.value || '').trim() || 'Fashion Label';
+      const email = (document.getElementById('quote-email')?.value || '').trim();
+      const phone = (document.getElementById('quote-phone')?.value || '').trim();
+      const category = document.getElementById('quote-category')?.value || 'Street Wear';
+      const qty = document.getElementById('quote-qty')?.value || '30 - 50 Pieces (Low MOQ Starter)';
+      const notes = (document.getElementById('quote-notes')?.value || '').trim();
+
+      const fileInput = document.getElementById('tech-pack-file');
+      const attachedFile = (fileInput && fileInput.files && fileInput.files[0]) ? fileInput.files[0].name : '';
 
       const msg = encodeURIComponent(
         `*SAZ WEARZ - PRODUCTION QUOTE INQUIRY*\n` +
         `-----------------------------------------\n` +
-        `• *Client Name:* ${fullName}\n` +
-        `• *Brand:* ${brandName}\n` +
-        `• *Email:* ${email || 'Provided on chat'}\n` +
-        `• *Category:* ${category}\n` +
-        `• *Order Quantity:* ${qty}\n` +
-        `• *Universal Low MOQ:* 30 Pieces\n` +
-        `• *Project Notes:* ${notes || 'Interested in Custom Cut & Sew Manufacturing'}\n\n` +
+        `- *Client Name:* ${fullName}\n` +
+        `- *Brand:* ${brandName}\n` +
+        `- *Email:* ${email || 'Provided on chat'}\n` +
+        `- *WhatsApp / Phone:* ${phone || 'This WhatsApp chat'}\n` +
+        `- *Category:* ${category}\n` +
+        `- *Order Quantity:* ${qty}\n` +
+        `- *Universal Low MOQ:* 30 Pieces\n` +
+        `${attachedFile ? `- *Tech Pack:* ${attachedFile} (Ready to share in chat)\n` : ''}` +
+        `- *Project Notes & Specs:* ${notes || 'Interested in Custom Cut & Sew Manufacturing'}\n\n` +
         `Hi Saz Wearz Team, please review our requirements and let us know sample feasibility & pricing.`
       );
 
@@ -2681,7 +2811,6 @@ function initQuoteForm() {
     });
   }
 }
-
 // 8. Scroll Spy for Navigation Active State
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
